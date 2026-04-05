@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>0 dan Biznes Boshlash | Professional Kurs</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2808408296186378');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2808408296186378&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
     <style>
         * {
             margin: 0;
@@ -795,7 +814,7 @@
     <section class="hero">
         <div class="hero-content">
             <div class="badge">🚀 Cheklagan O'rinlar - 50% Chegirma</div>
-            <h1>0 dan <span></span> Biznes Boshlash</h1>
+            <h1>0 dan <span>Biznes Boshlash</span></h1>
             <p class="hero-subtitle">
                 Hech qanday boshlang'ich kapital, tajriba yoki aloqalar talab etilmaydi. 
                 Faqat telefon va internet bilan o'z biznesingizni boshlang.
@@ -1048,11 +1067,6 @@
             <div class="form-header">
                 <h2>Hozir Ro'yxatdan O'ting</h2>
                 <p>Quyidagi formani to'ldirib, bepul konsultatsiya oling</p>
-                
-                <!-- <div class="price-tag">
-                    <span class="old-price">$200</span>
-                    $99
-                </div> -->
             </div>
             
             <form id="leadForm">
@@ -1112,23 +1126,9 @@
         <p>&copy; 2024 VSL Academy. Barcha huquqlar himoyalangan.</p>
     </footer>
 
-    <!-- Facebook Pixel -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', 'YOUR_PIXEL_ID');
-        fbq('track', 'PageView');
-    </script>
-
     <script>
         // Configuration
-        const API_URL = 'https://vsl-production.up.railway.app'; // Change to your backend URL
+        const API_URL = 'https://vsl-production.up.railway.app';
         
         // Countdown Timer
         function updateCountdown() {
@@ -1214,7 +1214,6 @@
             }
         });
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
