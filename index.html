@@ -1163,8 +1163,10 @@
             submitBtn.disabled = true;
 
             try {
+                // 1. Lead hodisasini yuborish
                 fbq('track', 'Lead');
                 
+                // API'ga so'rov yuborish
                 const response = await fetch(`${API_URL}/lead`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1174,8 +1176,11 @@
                 const data = await response.json();
 
                 if (data.success) {
-                    document.getElementById('successModal').classList.add('active');
+                    // 2. Muvaffaqiyatli ro'yxatdan o'tish hodisasini yuborish
                     fbq('track', 'CompleteRegistration');
+                    
+                    // Modalni ko'rsatish
+                    document.getElementById('successModal').classList.add('active');
                 } else {
                     alert(data.message || 'Xatolik yuz berdi');
                 }
