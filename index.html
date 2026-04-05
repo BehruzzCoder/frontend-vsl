@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0 dan Biznes Boshlash | Professional Kurs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #22d3ee;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #10b981;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(217, 70, 239, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 5% 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Pain Points Section */
+        .pain-points {
+            padding: 80px 5%;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pain-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pain-card::before {
+            content: '❌';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+        }
+
+        .pain-card h3 {
+            color: #f87171;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .pain-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 100px 5%;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .solution-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .solution-content h2 span {
+            color: var(--accent);
+        }
+
+        .solution-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .solution-list li {
+            padding: 15px 0;
+            padding-left: 40px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .solution-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .solution-visual {
+            position: relative;
+        }
+
+        .floating-card {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .module-preview {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .module-item {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .module-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 5%;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 25px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .benefit-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 5%;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            margin-bottom: 25px;
+            line-height: 1.8;
+            color: #cbd5e1;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            color: var(--light);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Urgency Section */
+        .urgency {
+            padding: 60px 5%;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2) 0%, rgba(153, 27, 27, 0.2) 100%);
+            border-top: 1px solid rgba(220, 38, 38, 0.3);
+            border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+            text-align: center;
+        }
+
+        .urgency h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fca5a5;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .countdown-item {
+            background: rgba(0,0,0,0.3);
+            padding: 20px 30px;
+            border-radius: 15px;
+            min-width: 100px;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ef4444;
+            display: block;
+        }
+
+        .countdown-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Registration Section */
+        .registration {
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 50px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .form-header p {
+            color: var(--gray);
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: var(--gradient);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .price-tag .old-price {
+            text-decoration: line-through;
+            opacity: 0.6;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 18px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: var(--gradient);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Success Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .success-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            max-width: 550px;
+            width: 100%;
+            padding: 60px 40px;
+            border-radius: 30px;
+            text-align: center;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.3);
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 50px;
+            animation: scaleIn 0.5s ease 0.3s both;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .success-card h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .success-card p {
+            color: var(--gray);
+            margin-bottom: 35px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 22px;
+            background: linear-gradient(135deg, #0088cc 0%, #00a8e8 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telegram-btn::before {
+            content: '→';
+            position: absolute;
+            right: 30px;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .telegram-btn:hover::before {
+            right: 20px;
+            opacity: 1;
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 136, 204, 0.4);
+        }
+
+        .hint-text {
+            margin-top: 25px;
+            color: #64748b;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .hint-text::before {
+            content: '💡';
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .countdown {
+                gap: 15px;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 15px;
+            }
+            
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .stats {
+                gap: 30px;
+            }
+        }
+
+        /* Loading */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .submit-btn.loading .spinner {
+            display: inline-block;
+        }
+
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">VSL</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">🚀 Cheklagan O'rinlar - 50% Chegirma</div>
+            <h1>0 dan <span></span> Biznes Boshlash</h1>
+            <p class="hero-subtitle">
+                Hech qanday boshlang'ich kapital, tajriba yoki aloqalar talab etilmaydi. 
+                Faqat telefon va internet bilan o'z biznesingizni boshlang.
+            </p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Muvaffaqiyatli O'quvchi</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$2M+</span>
+                    <span class="stat-label">O'quvchilar Daromadi</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Mamnunlik Darajasi</span>
+                </div>
+            </div>
+
+            <a href="#registration" class="submit-btn" style="display: inline-block; width: auto; padding: 20px 50px; text-decoration: none;">
+                Bepul Ro'yxatdan O'tish →
+            </a>
+        </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="pain-points">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ko'pchilik Qayerda Xato Qiladi?</h2>
+                <p>Biznes boshlashda eng katta to'siqlar va ularni qanday yengish mumkin</p>
+            </div>
+            
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <h3>Noto'g'ri Nisha Tanlash</h3>
+                    <p>80% yangi tadbirkorlar raqobatli yoki daromadli bo'lmagan sohani tanlaydi va 3 oy ichida biznesini yopadi.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>Kapital Yetishmasligi</h3>
+                    <p>Katta investitsiya talab qiluvchi biznes modellari o'rniga, minimal xarajat bilan boshlash usullarini o'rganing.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>Mijoz Topa Olmaydi</h3>
+                    <p>Mahsulot yaxshi bo'lsa ham, noto'g'ri marketing strategiyasi tufayli sotuv bo'lmaydi.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>Jamoa Boshqaruvi</h3>
+                    <p>Biznes o'sgach, noto'g'ri yollashlar va boshqaruv tufayli baraka yo'qoladi.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>Marketplace'larda Yutqazish</h3>
+                    <p>Uzum va Yandex'da algoritmlarni tushunmasdan mahsulot qo'shish - pul yo'qotish.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>Transformatsiya Yo'qligi</h3>
+                    <p>O'zgarish vaqti kelganda eski usullardan voz kechish va yangi strategiyalarga o'tish qiyinligi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <div class="solution-grid">
+                <div class="solution-content">
+                    <h2>Biz Sizga <span>6 Modullik</span> Tizimni Taqdim Etamiz</h2>
+                    <p style="color: var(--gray); margin-bottom: 20px;">
+                        Har bir modul amaliy mashg'ulotlar, real case-studies va mentorlik bilan 
+                        15 yillik tajribani 6 haftaga siqib beradi.
+                    </p>
+                    
+                    <ul class="solution-list">
+                        <li>0 dan biznes boshlash strategiyasi</li>
+                        <li>Talabga kuchli produkt aniqlash</li>
+                        <li>Samarali marketing va reklama</li>
+                        <li>Sotuv strategiyasi va jamoa boshqaruvi</li>
+                        <li>Uzum & Yandex marketplace masterclass</li>
+                        <li>Transformatsiya va masshtablash</li>
+                    </ul>
+                </div>
+                
+                <div class="solution-visual">
+                    <div class="floating-card">
+                        <div class="module-preview">
+                            <div class="module-item">
+                                <div class="module-icon">🎯</div>
+                                <div>
+                                    <strong>Modul 1</strong>
+                                    <p style="color: var(--gray); font-size: 0.9rem;">Bozor tahlili va nisha tanlash</p>
+                                </div>
+                            </div>
+                            <div class="module-item">
+                                <div class="module-icon">📦</div>
+                                <div>
+                                    <strong>Modul 2</strong>
+                                    <p style="color: var(--gray); font-size: 0.9rem;">Produkt yaratish va sinov</p>
+                                </div>
+                            </div>
+                            <div class="module-item">
+                                <div class="module-icon">📢</div>
+                                <div>
+                                    <strong>Modul 3</strong>
+                                    <p style="color: var(--gray); font-size: 0.9rem;">Marketing avtomatizatsiyasi</p>
+                                </div>
+                            </div>
+                            <div class="module-item">
+                                <div class="module-icon">💰</div>
+                                <div>
+                                    <strong>Modul 4</strong>
+                                    <p style="color: var(--gray); font-size: 0.9rem;">Sotuv va jamoa</p>
+                                </div>
+                            </div>
+                            <div class="module-item">
+                                <div class="module-icon">🛒</div>
+                                <div>
+                                    <strong>Modul 5</strong>
+                                    <p style="color: var(--gray); font-size: 0.9rem;">Marketplace integratsiya</p>
+                                </div>
+                            </div>
+                            <div class="module-item">
+                                <div class="module-icon">🚀</div>
+                                <div>
+                                    <strong>Modul 6</strong>
+                                    <p style="color: var(--gray); font-size: 0.9rem;">Masshtab va investorlik</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nima Uchun Aynan Biz?</h2>
+                <p>Bizning kursni boshqa kurslardan ajratib turuvchi asosiy afzalliklar</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">👨‍🏫</div>
+                    <h3>Amaliy Mentorlik</h3>
+                    <p>Har hafta jonli qo'llab-quvvatlash va shaxsiy maslahatlar</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>Telegram Jamoa</h3>
+                    <p>Bitta maqsaddagi tadbirkorlar bilan doimiy aloqa va tarmoq</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎁</div>
+                    <h3>Shablonlar</h3>
+                    <p>Tayyor marketing matnlari, shartnomalar va avtomatizatsiya skriptlari</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">♾️</div>
+                    <h3>Dozimiy Access</h3>
+                    <p>Kurs materiallariga umrbod kirish va yangilanishlar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>O'quvchilarimizdan Fikrlar</h2>
+                <p>Ularning muvaffaqiyat hikoyalari</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "3 oy oldin ishimsiz edim. Kursdan keyin o'z onlayn kiyim do'konimni ochdim. 
+                        Hozir oyiga $3000+ daromad. Eng yaxshi investitsiya!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Aziza K.</h4>
+                            <p>Moda Do'koni Egasi</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Marketplace'da sotishni o'ylaganimda juda qo'rqardim. Uzum bo'yicha modul 
+                        menga 2 haftada 50 ta birinchi buyurtmani olishga yordam berdi."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">B</div>
+                        <div class="author-info">
+                            <h4>Bekzod M.</h4>
+                            <p>Elektronika Sotuvchisi</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Jamoa boshqaruvi moduli menga 10 kishilik jamoani samarali boshqarishni o'rgatdi. 
+                        Biznesim 3 barobar o'sdi, lekin men kamroq ishlashim mumkin bo'ldi."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">G</div>
+                        <div class="author-info">
+                            <h4>Gulnora T.</h4>
+                            <p>Logistika Kompaniyasi Direktori</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Section -->
+    <section class="urgency">
+        <div class="container">
+            <h2>⏰ Chegirma Tugashiga Qoldi</h2>
+            <p style="color: var(--gray);">Hozir ro'yxatdan o'ting va 50% tejab qoling</p>
+            
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">23</span>
+                    <span class="countdown-label">Soat</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">59</span>
+                    <span class="countdown-label">Daqiqa</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">59</span>
+                    <span class="countdown-label">Soniya</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration -->
+    <section class="registration" id="registration">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Hozir Ro'yxatdan O'ting</h2>
+                <p>Quyidagi formani to'ldirib, bepul konsultatsiya oling</p>
+                
+                <!-- <div class="price-tag">
+                    <span class="old-price">$200</span>
+                    $99
+                </div> -->
+            </div>
+            
+            <form id="leadForm">
+                <div class="form-group">
+                    <label for="name">Ismingiz</label>
+                    <input type="text" id="name" name="name" required placeholder="Ismingizni kiriting">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Telefon Raqamingiz</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+998 90 123 45 67">
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Joyni Band Qilish →</span>
+                    <span class="spinner"></span>
+                </button>
+            </form>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <span>🔒</span>
+                    <span>Ma'lumotlar xavfsiz</span>
+                </div>
+                <div class="trust-badge">
+                    <span>✓</span>
+                    <span>100% Kafolat</span>
+                </div>
+                <div class="trust-badge">
+                    <span>⚡</span>
+                    <span>Tez javob</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="success-card">
+            <div class="success-icon">✓</div>
+            <h2>Tabriklaymiz!</h2>
+            <p>
+                Siz muvaffaqiyatli ro'yxatdan o'tdingiz. 
+                Yanada batafsil ma'lumotlar, dars jadvali va maxsus bonuslar uchun 
+                Telegram kanalimizga qo'shiling.
+            </p>
+            <a href="https://t.me/marufmurodovich" target="_blank" class="telegram-btn" onclick="trackTelegramClick()">
+                <span>💬</span>
+                <span>Telegram Kanalga O'tish</span>
+            </a>
+            <p class="hint-text">Barcha keyingi ma'lumotlar kanal ichida beriladi</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 VSL Academy. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+    <!-- Facebook Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+
+    <script>
+        // Configuration
+        const API_URL = 'https://vsl-production.up.railway.app'; // Change to your backend URL
+        
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const diff = tomorrow - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Form Submission
+        document.getElementById('leadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            try {
+                fbq('track', 'Lead');
+                
+                const response = await fetch(`${API_URL}/lead`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, phone })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('successModal').classList.add('active');
+                    fbq('track', 'CompleteRegistration');
+                } else {
+                    alert(data.message || 'Xatolik yuz berdi');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Internet aloqasini tekshiring');
+            } finally {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Telegram Click Tracking
+        function trackTelegramClick() {
+            fbq('track', 'TelegramChannelClick');
+        }
+
+        // Phone Mask
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.startsWith('998')) value = value.slice(3);
+            
+            let formatted = '+998';
+            if (value.length > 0) formatted += ' ' + value.slice(0, 2);
+            if (value.length > 2) formatted += ' ' + value.slice(2, 5);
+            if (value.length > 5) formatted += ' ' + value.slice(5, 7);
+            if (value.length > 7) formatted += ' ' + value.slice(7, 9);
+            
+            e.target.value = formatted;
+        });
+
+        // Close modal on overlay click
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
