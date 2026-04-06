@@ -377,113 +377,6 @@
             font-size: 0.95rem;
         }
 
-        /* Testimonials */
-        .testimonials {
-            padding: 100px 5%;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .testimonial-card {
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
-            padding: 35px;
-            border: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 25px;
-            font-size: 4rem;
-            color: var(--primary);
-            opacity: 0.3;
-            font-family: serif;
-        }
-
-        .testimonial-text {
-            margin-bottom: 25px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .author-info h4 {
-            color: var(--light);
-            margin-bottom: 5px;
-        }
-
-        .author-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* Urgency Section */
-        .urgency {
-            padding: 60px 5%;
-            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2) 0%, rgba(153, 27, 27, 0.2) 100%);
-            border-top: 1px solid rgba(220, 38, 38, 0.3);
-            border-bottom: 1px solid rgba(220, 38, 38, 0.3);
-            text-align: center;
-        }
-
-        .urgency h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #fca5a5;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .countdown-item {
-            background: rgba(0,0,0,0.3);
-            padding: 20px 30px;
-            border-radius: 15px;
-            min-width: 100px;
-        }
-
-        .countdown-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #ef4444;
-            display: block;
-        }
-
-        .countdown-label {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
         /* Registration Section */
         .registration {
             padding: 100px 5%;
@@ -513,23 +406,6 @@
 
         .form-header p {
             color: var(--gray);
-        }
-
-        .price-tag {
-            display: inline-block;
-            background: var(--gradient);
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 20px 0;
-        }
-
-        .price-tag .old-price {
-            text-decoration: line-through;
-            opacity: 0.6;
-            font-size: 1rem;
-            margin-right: 10px;
         }
 
         .form-group {
@@ -753,19 +629,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .countdown {
-                gap: 15px;
-            }
-            
-            .countdown-item {
-                min-width: 70px;
-                padding: 15px;
-            }
-            
-            .countdown-number {
-                font-size: 1.8rem;
-            }
-            
             .form-container {
                 padding: 30px 20px;
             }
@@ -813,7 +676,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="badge">🚀 Cheklagan O'rinlar - 50% Chegirma</div>
+            <div class="badge">🚀 Professional Biznes Kursi</div>
             <h1>0 dan <span>Biznes Boshlash</span></h1>
             <p class="hero-subtitle">
                 Hech qanday boshlang'ich kapital, tajriba yoki aloqalar talab etilmaydi. 
@@ -984,83 +847,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>O'quvchilarimizdan Fikrlar</h2>
-                <p>Ularning muvaffaqiyat hikoyalari</p>
-            </div>
-            
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">
-                        "3 oy oldin ishimsiz edim. Kursdan keyin o'z onlayn kiyim do'konimni ochdim. 
-                        Hozir oyiga $3000+ daromad. Eng yaxshi investitsiya!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div class="author-info">
-                            <h4>Aziza K.</h4>
-                            <p>Moda Do'koni Egasi</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">
-                        "Marketplace'da sotishni o'ylaganimda juda qo'rqardim. Uzum bo'yicha modul 
-                        menga 2 haftada 50 ta birinchi buyurtmani olishga yordam berdi."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">B</div>
-                        <div class="author-info">
-                            <h4>Bekzod M.</h4>
-                            <p>Elektronika Sotuvchisi</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">
-                        "Jamoa boshqaruvi moduli menga 10 kishilik jamoani samarali boshqarishni o'rgatdi. 
-                        Biznesim 3 barobar o'sdi, lekin men kamroq ishlashim mumkin bo'ldi."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">G</div>
-                        <div class="author-info">
-                            <h4>Gulnora T.</h4>
-                            <p>Logistika Kompaniyasi Direktori</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Urgency Section -->
-    <section class="urgency">
-        <div class="container">
-            <h2>⏰ Chegirma Tugashiga Qoldi</h2>
-            <p style="color: var(--gray);">Hozir ro'yxatdan o'ting va 50% tejab qoling</p>
-            
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">23</span>
-                    <span class="countdown-label">Soat</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">59</span>
-                    <span class="countdown-label">Daqiqa</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">59</span>
-                    <span class="countdown-label">Soniya</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Registration -->
     <section class="registration" id="registration">
         <div class="form-container">
@@ -1130,27 +916,6 @@
         // Configuration
         const API_URL = 'https://vsl-production.up.railway.app';
         
-        // Countdown Timer
-        function updateCountdown() {
-            const now = new Date();
-            const tomorrow = new Date(now);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            tomorrow.setHours(0, 0, 0, 0);
-            
-            const diff = tomorrow - now;
-            
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-        
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
         // Form Submission
         document.getElementById('leadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
