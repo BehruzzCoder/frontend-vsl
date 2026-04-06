@@ -18,9 +18,10 @@
     fbq('init', '2808408296186378');
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2808408296186378&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=2808408296186378&ev=PageView&noscript=1"/>
+    </noscript>
     <!-- End Meta Pixel Code -->
     
     <style>
@@ -50,7 +51,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -64,7 +64,6 @@
                 radial-gradient(circle at 40% 20%, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -92,7 +91,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -172,7 +170,6 @@
             font-size: 0.9rem;
         }
 
-        /* Pain Points Section */
         .pain-points {
             padding: 80px 5%;
             background: rgba(15, 23, 42, 0.5);
@@ -240,7 +237,6 @@
             line-height: 1.7;
         }
 
-        /* Solution Section */
         .solution {
             padding: 100px 5%;
         }
@@ -328,7 +324,6 @@
             font-size: 1.2rem;
         }
 
-        /* Benefits Section */
         .benefits {
             padding: 100px 5%;
             background: rgba(15, 23, 42, 0.5);
@@ -377,7 +372,6 @@
             font-size: 0.95rem;
         }
 
-        /* Registration Section */
         .registration {
             padding: 100px 5%;
             position: relative;
@@ -487,7 +481,6 @@
             font-size: 0.9rem;
         }
 
-        /* Success Modal */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -614,7 +607,6 @@
             content: '💡';
         }
 
-        /* Footer */
         footer {
             background: var(--darker);
             padding: 40px 5%;
@@ -623,7 +615,6 @@
             color: var(--gray);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .solution-grid {
                 grid-template-columns: 1fr;
@@ -638,7 +629,6 @@
             }
         }
 
-        /* Loading */
         .spinner {
             display: none;
             width: 20px;
@@ -666,14 +656,12 @@
 <body>
     <div class="bg-animation"></div>
 
-    <!-- Navigation -->
     <nav>
         <div class="nav-content">
             <div class="logo">VSL</div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <div class="badge">🚀 Professional Biznes Kursi</div>
@@ -704,7 +692,6 @@
         </div>
     </section>
 
-    <!-- Pain Points -->
     <section class="pain-points">
         <div class="container">
             <div class="section-header">
@@ -741,7 +728,6 @@
         </div>
     </section>
 
-    <!-- Solution Section -->
     <section class="solution">
         <div class="container">
             <div class="solution-grid">
@@ -814,7 +800,6 @@
         </div>
     </section>
 
-    <!-- Benefits -->
     <section class="benefits">
         <div class="container">
             <div class="section-header">
@@ -847,7 +832,6 @@
         </div>
     </section>
 
-    <!-- Registration -->
     <section class="registration" id="registration">
         <div class="form-container">
             <div class="form-header">
@@ -889,14 +873,13 @@
         </div>
     </section>
 
-    <!-- Success Modal -->
     <div class="modal-overlay" id="successModal">
         <div class="success-card">
             <div class="success-icon">✓</div>
             <h2>Tabriklaymiz!</h2>
             <p>
-                Siz muvaffaqiyatli ro'yxatdan o'tdingiz. 
-                Yanada batafsil ma'lumotlar, dars jadvali va maxsus bonuslar uchun 
+                Siz muvaffaqiyatli ro'yxatdan o'tdingiz.
+                Yanada batafsil ma'lumotlar, dars jadvali va maxsus bonuslar uchun
                 Telegram kanalimizga qo'shiling.
             </p>
             <a href="https://t.me/marufmurodovich" target="_blank" class="telegram-btn" onclick="trackTelegramClick()">
@@ -907,45 +890,52 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2024 VSL Academy. Barcha huquqlar himoyalangan.</p>
     </footer>
 
     <script>
-        // Configuration
         const API_URL = 'https://vsl-production.up.railway.app';
-        
-        // Form Submission
-        document.getElementById('leadForm').addEventListener('submit', async function(e) {
+
+        const leadForm = document.getElementById('leadForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successModal = document.getElementById('successModal');
+        const phoneInput = document.getElementById('phone');
+
+        leadForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
+
             const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
+            const phone = phoneInput.value.trim();
+
+            if (!name || !phone) {
+                alert('Iltimos, ism va telefon raqamni kiriting');
+                return;
+            }
 
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
 
             try {
-                // 1. Lead hodisasini yuborish
-                fbq('track', 'Lead');
-                
-                // API'ga so'rov yuborish
                 const response = await fetch(`${API_URL}/lead`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify({ name, phone })
                 });
 
                 const data = await response.json();
 
-                if (data.success) {
-                    // 2. Muvaffaqiyatli ro'yxatdan o'tish hodisasini yuborish
-                    fbq('track', 'CompleteRegistration');
-                    
-                    // Modalni ko'rsatish
-                    document.getElementById('successModal').classList.add('active');
+                if (response.ok && data.success) {
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead');
+                        fbq('track', 'CompleteRegistration');
+                    }
+
+                    successModal.classList.add('active');
+                    leadForm.reset();
+                    phoneInput.value = '+998 ';
                 } else {
                     alert(data.message || 'Xatolik yuz berdi');
                 }
@@ -958,38 +948,52 @@
             }
         });
 
-        // Telegram Click Tracking
         function trackTelegramClick() {
-            fbq('track', 'TelegramChannelClick');
+            if (typeof fbq !== 'undefined') {
+                fbq('trackCustom', 'TelegramChannelClick');
+            }
         }
 
-        // Phone Mask
-        document.getElementById('phone').addEventListener('input', function(e) {
+        phoneInput.addEventListener('focus', function() {
+            if (!this.value.trim()) {
+                this.value = '+998 ';
+            }
+        });
+
+        phoneInput.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
-            if (value.startsWith('998')) value = value.slice(3);
-            
+
+            if (value.startsWith('998')) {
+                value = value.slice(3);
+            }
+
+            value = value.slice(0, 9);
+
             let formatted = '+998';
             if (value.length > 0) formatted += ' ' + value.slice(0, 2);
             if (value.length > 2) formatted += ' ' + value.slice(2, 5);
             if (value.length > 5) formatted += ' ' + value.slice(5, 7);
             if (value.length > 7) formatted += ' ' + value.slice(7, 9);
-            
+
             e.target.value = formatted;
         });
 
-        // Close modal on overlay click
-        document.getElementById('successModal').addEventListener('click', function(e) {
+        successModal.addEventListener('click', function(e) {
             if (e.target === this) {
                 this.classList.remove('active');
             }
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
