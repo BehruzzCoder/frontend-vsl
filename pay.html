@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Biznes Texnikum | Kursga ariza</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f7fb;
+            min-height: 100vh;
+            padding: 20px 16px 40px;
+        }
+
+        /* Asosiy konteyner */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* 3 bosqich - 1-rasmdagidek */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            background: white;
+            border-radius: 50px;
+            padding: 8px 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .step {
+            color: #cbd5e1;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .step.active {
+            color: #e67e22;
+        }
+
+        /* Asosiy karta */
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 28px 24px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        /* Universitet nomi */
+        .university {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .university h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #e67e22;
+            letter-spacing: -0.5px;
+        }
+
+        /* Sarlavha */
+        .main-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
+            color: #1e293b;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        /* Bonus qismi */
+        .bonus {
+            background: #fef3c7;
+            border-radius: 20px;
+            padding: 14px 16px;
+            text-align: center;
+            margin-bottom: 24px;
+            border: 1px solid #fde68a;
+        }
+
+        .bonus p {
+            font-weight: 600;
+            color: #b45309;
+            font-size: 14px;
+        }
+
+        /* Form elementlari */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            font-size: 16px;
+            font-family: inherit;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #e67e22;
+            box-shadow: 0 0 0 3px rgba(230,126,34,0.1);
+        }
+
+        /* Telefon qatori */
+        .phone-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .phone-row select {
+            width: 90px;
+            flex-shrink: 0;
+        }
+
+        .phone-row input {
+            flex: 1;
+        }
+
+        /* Tarif tanlash */
+        .tarif-label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #334155;
+            margin-bottom: 12px;
+        }
+
+        .tarif-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .tarif-item {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tarif-item.selected {
+            border-color: #e67e22;
+            background: #fff7ed;
+        }
+
+        .tarif-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: #1e293b;
+        }
+
+        .tarif-price {
+            font-weight: 800;
+            font-size: 16px;
+            color: #e67e22;
+        }
+
+        /* Checkbox */
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .checkbox input {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+        }
+
+        .checkbox label {
+            margin: 0;
+            font-size: 13px;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        /* Tugma */
+        .btn {
+            width: 100%;
+            background: #e67e22;
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:disabled {
+            background: #cbd5e1;
+        }
+
+        /* Muvaffaqiyat xabari */
+        .success {
+            background: #ecfdf5;
+            border-radius: 28px;
+            padding: 40px 24px;
+            text-align: center;
+            display: none;
+        }
+
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 12px;
+        }
+
+        .success h3 {
+            color: #065f46;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .success p {
+            color: #065f46;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .phones {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .phones a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            background: white;
+            padding: 10px 18px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .admin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        .copyright {
+            color: #94a3b8;
+            font-size: 11px;
+            margin-top: 20px;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: #e2e8f0;
+            margin: 16px 0;
+        }
+
+        /* Yuklanish animatsiyasi */
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid white;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.5s linear infinite;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 3 bosqich -->
+    <div class="steps">
+        <div class="step active">Ma'lumot kirish</div>
+        <div class="step">To'lov qilish</div>
+        <div class="step">Yakunlash</div>
+    </div>
+
+    <!-- Asosiy forma -->
+    <div id="formCard" class="card">
+        <div class="university">
+            <h2>🏫 BIZNES TEKNIKUM</h2>
+        </div>
+
+        <div class="main-title">
+            7 HAFTA ICHIDA QANDAY QILIB NOLDAN<br>
+            BIZNES BOSHLASH YOKI BORINI<br>
+            RIVOJLANTIRISHINI O'RGANING!
+        </div>
+
+        <div class="bonus">
+            <p>🎁 Hoziroq formani to'ldiring va bonuslarni qo'lga kiriting!</p>
+        </div>
+
+        <form id="applicationForm">
+            <div class="form-group">
+                <label>Ism familiyangiz:</label>
+                <input type="text" id="fullname" placeholder="Ism familiyangiz" autocomplete="name">
+            </div>
+
+            <div class="form-group">
+                <label>Telefon raqamingiz:</label>
+                <div class="phone-row">
+                    <select id="phoneCode">
+                        <option value="+998">+998</option>
+                        <option value="+7">+7</option>
+                        <option value="+992">+992</option>
+                    </select>
+                    <input type="tel" id="phoneNumber" placeholder="99 123-45-67" autocomplete="tel">
+                </div>
+            </div>
+
+            <div class="tarif-label">Tarifni tanlash:</div>
+            <div class="tarif-options" id="tarifOptions">
+                <div class="tarif-item" data-name="Premium" data-price="9800000">
+                    <span class="tarif-name">🚀 Premium</span>
+                    <span class="tarif-price">9 800 000 so'm</span>
+                </div>
+                <div class="tarif-item" data-name="Biznes" data-price="16000000">
+                    <span class="tarif-name">📈 Biznes</span>
+                    <span class="tarif-price">16 000 000 so'm</span>
+                </div>
+                <div class="tarif-item" data-name="VIP" data-price="24000000">
+                    <span class="tarif-name">👑 VIP</span>
+                    <span class="tarif-price">24 000 000 so'm</span>
+                </div>
+            </div>
+            <input type="hidden" id="selectedTariff" value="Premium">
+            <input type="hidden" id="selectedPrice" value="9800000">
+
+            <div class="checkbox">
+                <input type="checkbox" id="agree">
+                <label>Ommaviy oferta shartnomasi shartlariga roziman</label>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">DAVOM ETISH</button>
+        </form>
+    </div>
+
+    <!-- Muvaffaqiyat xabari -->
+    <div id="successCard" class="success">
+        <div class="success-icon">✅</div>
+        <h3>Arizangiz qabul qilindi!</h3>
+        <p>Menejerlarimiz siz bilan bog'lanadi</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="phones">
+            <a href="tel:+998998055361">📞 +998 99 805 5361</a>
+            <a href="tel:+998998055361">📞 +998 99 805 5361</a>
+        </div>
+        <a href="https://t.me/MenejerMuxlisa" target="_blank" class="admin-link">
+            💬 Admin bilan bog'lanish
+        </a>
+        <hr>
+        <div class="copyright">
+            © 2026 Biznes texnikum. Barcha huquqlar himoyalangan.
+        </div>
+    </div>
+</div>
+
+<script>
+    // ========== TARIF TANLASH ==========
+    const tarifItems = document.querySelectorAll('.tarif-item');
+    const selectedTariff = document.getElementById('selectedTariff');
+    const selectedPrice = document.getElementById('selectedPrice');
+
+    tarifItems.forEach(item => {
+        item.addEventListener('click', () => {
+            tarifItems.forEach(i => i.classList.remove('selected'));
+            item.classList.add('selected');
+            selectedTariff.value = item.getAttribute('data-name');
+            selectedPrice.value = item.getAttribute('data-price');
+        });
+    });
+    // Default: Premium tanlangan
+    tarifItems[0].classList.add('selected');
+
+    // ========== BACKEND URL ==========
+    // ⚠️ O'ZINGIZNING APP SCRIPT URL INI SHU YERGA QO'YING ⚠️
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMFIYOHgSDvNvg7er5uARsMhLQRyqO6n8qcn-qyWCsYXChMkkKl1DQM7MIdyiRllzS/exec';
+
+    // ========== FORM YUBORISH ==========
+    const form = document.getElementById('applicationForm');
+    const formCard = document.getElementById('formCard');
+    const successCard = document.getElementById('successCard');
+    const submitBtn = document.getElementById('submitBtn');
+
+    async function sendToSheets(data) {
+        await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const fullname = document.getElementById('fullname').value.trim();
+        const phoneNumber = document.getElementById('phoneNumber').value.trim();
+        const phoneCode = document.getElementById('phoneCode').value;
+        const agree = document.getElementById('agree').checked;
+        const tariff = selectedTariff.value;
+        const price = selectedPrice.value;
+
+        // Validatsiya
+        if (!fullname) {
+            alert("❗ Iltimos, ism familiyangizni kiriting");
+            document.getElementById('fullname').focus();
+            return;
+        }
+        if (!phoneNumber) {
+            alert("❗ Iltimos, telefon raqamingizni kiriting");
+            document.getElementById('phoneNumber').focus();
+            return;
+        }
+        const phoneClean = phoneNumber.replace(/\s/g, '');
+        if (phoneClean.length < 9) {
+            alert("❗ Telefon raqam to'liq emas");
+            return;
+        }
+        if (!agree) {
+            alert("❗ Iltimos, Ommaviy oferta shartlariga roziman belgisini qo'ying");
+            return;
+        }
+
+        const fullPhone = phoneCode + phoneClean;
+
+        const postData = {
+            action: 'addRecord',
+            fullname: fullname,
+            phone: fullPhone,
+            tariff: tariff,
+            price: price,
+            status: 'Yangi'
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span> Yuborilmoqda...';
+
+        try {
+            await sendToSheets(postData);
+            
+            // Muvaffaqiyat
+            formCard.style.display = 'none';
+            successCard.style.display = 'block';
+            
+            // Formani tozalash
+            form.reset();
+            document.getElementById('agree').checked = false;
+            tarifItems.forEach(i => i.classList.remove('selected'));
+            tarifItems[0].classList.add('selected');
+            selectedTariff.value = 'Premium';
+            selectedPrice.value = '9800000';
+            
+            // 5 soniyadan keyin formani qayta ko'rsatish
+            setTimeout(() => {
+                successCard.style.display = 'none';
+                formCard.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 5000);
+            
+        } catch (error) {
+            alert("❌ Xatolik yuz berdi. Iltimos, qaytadan urunib ko'ring");
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'DAVOM ETISH';
+        }
+    });
+
+    // Telefon raqamni formatlash
+    const phoneInput = document.getElementById('phoneNumber');
+    phoneInput.addEventListener('input', function(e) {
+        let val = this.value.replace(/\D/g, '');
+        if (val.length >= 2 && val.length <= 4) {
+            this.value = val.replace(/(\d{2})(\d{0,2})/, '$1 $2');
+        } else if (val.length > 4 && val.length <= 6) {
+            this.value = val.replace(/(\d{2})(\d{3})(\d{0,2})/, '$1 $2 $3');
+        } else if (val.length > 6) {
+            this.value = val.replace(/(\d{2})(\d{3})(\d{2})(\d{0,2})/, '$1 $2 $3 $4');
+        } else {
+            this.value = val;
+        }
+    });
+</script>
+</body>
+</html>
