@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ishga qabul</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2808408296186378');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=2808408296186378&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0b10;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-top: 8px;
+        }
+
+        .page-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .page-header p {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        .form-card {
+            background: #14161f;
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid #1f2230;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+
+        .form-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #1f2230;
+        }
+
+        .step-badge {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .form-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .form-subtitle {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-top: 2px;
+        }
+
+        .field-group {
+            margin-bottom: 18px;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #a1a5b7;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .field-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: #0a0b10;
+            border: 1.5px solid #2a2d3a;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.2s;
+            -webkit-appearance: none;
+        }
+
+        .field-input:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+        }
+
+        .field-input::placeholder {
+            color: #4b5563;
+        }
+
+        .phone-prefix {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8b5cf6;
+            font-weight: 600;
+            font-size: 15px;
+            pointer-events: none;
+        }
+
+        .phone-input {
+            padding-left: 58px !important;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            -webkit-appearance: none;
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .footer-card {
+            background: #14161f;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #1f2230;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .footer-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .footer-text h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .footer-text p {
+            font-size: 13px;
+            color: #9ca3af;
+            line-height: 1.4;
+        }
+
+        .privacy-text {
+            text-align: center;
+            font-size: 12px;
+            color: #4b5563;
+        }
+
+        .success-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+            box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .success-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .success-desc {
+            color: #9ca3af;
+            font-size: 15px;
+        }
+
+        .error-msg {
+            display: none;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139,92,246,0.15), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .glow-1 { top: -100px; left: -100px; }
+        .glow-2 { bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(124,58,237,0.1), transparent 70%); }
+
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+            .form-card { padding: 20px; }
+            .page-header h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Karyera imkoniyati</h1>
+            <p>Bizning jamoamizga qo'shiling va o'sing</p>
+        </div>
+
+        <div class="form-card" id="formCard">
+            <div class="form-header">
+                <div class="step-badge">1</div>
+                <div>
+                    <div class="form-title">Ariza topshirish</div>
+                    <div class="form-subtitle">Quyidagi ma'lumotlarni to'ldiring</div>
+                </div>
+            </div>
+
+            <div class="error-msg" id="errorMsg"></div>
+
+            <form id="careerForm">
+                <div class="field-group">
+                    <label class="field-label" for="fullname">Ism va familiya</label>
+                    <input type="text" class="field-input" id="fullname" name="fullname" placeholder="Bekzod Karimov" required>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="phone">Telefon raqam</label>
+                    <div class="input-wrap">
+                        <span class="phone-prefix">+998</span>
+                        <input type="tel" class="field-input phone-input" id="phone" name="phone" placeholder="88 888 88 88" required>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="address">Turar joy</label>
+                    <input type="text" class="field-input" id="address" name="address" placeholder="Toshkent, Yunusobod" required>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="age">Yosh</label>
+                    <input type="number" class="field-input" id="age" name="age" min="16" max="70" placeholder="25" required>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="salary">Kutilayotgan oylik daromad (so'm)</label>
+                    <input type="number" class="field-input" id="salary" name="salary" placeholder="5 000 000" required>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText">Ariza yuborish</span>
+                    <div class="spinner" id="spinner"></div>
+                </button>
+            </form>
+
+            <div class="success-screen" id="successScreen">
+                <div class="success-icon">✓</div>
+                <div class="success-title">Arizangiz qabul qilindi!</div>
+                <div class="success-desc">Bizning mutaxassislarimiz tez orada siz bilan bog'lanadi.</div>
+            </div>
+        </div>
+
+        <div class="footer-card">
+            <div class="footer-icon">👔</div>
+            <div class="footer-text">
+                <h4>HR bo'limi</h4>
+                <p>Barcha arizalar qat'iy saralanadi. Mos bo'lsangiz, 24 soat ichida javob beramiz.</p>
+            </div>
+        </div>
+
+        <p class="privacy-text">Ariza yuborish orqali siz shaxsiy ma'lumotlaringizni qayta ishlashga rozilik bildirasiz.</p>
+    </div>
+
+    <script>
+        const phoneInput = document.getElementById('phone');
+        
+        phoneInput.addEventListener('input', function(e) {
+            let val = e.target.value.replace(/\D/g, '');
+            if (val.length > 9) val = val.slice(0, 9);
+            
+            let formatted = '';
+            if (val.length > 0) {
+                formatted = val.slice(0, 2);
+                if (val.length > 2) formatted += ' ' + val.slice(2, 5);
+                if (val.length > 5) formatted += ' ' + val.slice(5, 7);
+                if (val.length > 7) formatted += ' ' + val.slice(7, 9);
+            }
+            e.target.value = formatted;
+        });
+
+        const form = document.getElementById('careerForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const spinner = document.getElementById('spinner');
+        const errorMsg = document.getElementById('errorMsg');
+        const successScreen = document.getElementById('successScreen');
+
+        // ⚠️ O'ZINGIZNING GOOGLE APPS SCRIPT URL'INGIZNI QO'YING
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwK6--yvCJ-BWR5SOEgO6d4HTweTsEEhYFpVXGizDeVZeEHIelWag0ignB4n4LFOTdP/exec';
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            errorMsg.style.display = 'none';
+
+            const phone = phoneInput.value.replace(/\D/g, '');
+            if (phone.length !== 9) {
+                errorMsg.textContent = 'Telefon raqami to\'liq emas. 9 ta raqam kiriting.';
+                errorMsg.style.display = 'block';
+                phoneInput.focus();
+                return;
+            }
+
+            const data = {
+                fullname: document.getElementById('fullname').value.trim(),
+                phone: '+998' + phone,
+                address: document.getElementById('address').value.trim(),
+                age: document.getElementById('age').value,
+                salary: document.getElementById('salary').value
+            };
+
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            spinner.style.display = 'block';
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    // Meta Pixel - CompleteRegistration
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'CompleteRegistration');
+                    }
+
+                    form.style.display = 'none';
+                    successScreen.style.display = 'block';
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (err) {
+                errorMsg.textContent = 'Xatolik yuz berdi. Iltimos, qayta urinib ko\'ring.';
+                errorMsg.style.display = 'block';
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                spinner.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
