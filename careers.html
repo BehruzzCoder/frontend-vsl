@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ishga qabul</title>
-    
+
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -23,7 +23,7 @@
              src="https://www.facebook.com/tr?id=2808408296186378&ev=PageView&noscript=1"/>
     </noscript>
     <!-- End Meta Pixel Code -->
-    
+
     <style>
         * {
             margin: 0;
@@ -319,6 +319,7 @@
             .page-header h1 { font-size: 22px; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -367,8 +368,20 @@
                 </div>
 
                 <div class="field-group">
-                    <label class="field-label" for="salary">Kutilayotgan oylik daromad (so'm)</label>
-                    <input type="number" class="field-input" id="salary" name="salary" placeholder="5 000 000" required>
+                    <label class="field-label" for="experience">Sotuv bo'yicha tajriba</label>
+                    <select class="field-input" id="experience" name="experience" required>
+                        <option value="" disabled selected>Tajribani tanlang</option>
+                        <option value="Yo'q">Yo'q</option>
+                        <option value="1 yilgacha">1 yilgacha</option>
+                        <option value="1-3 yil">1-3 yil</option>
+                        <option value="3-5 yil">3-5 yil</option>
+                        <option value="5 yildan ko'p">5 yildan ko'p</option>
+                    </select>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="reason">Nima sababdan sizni ishga olishimiz kerak?</label>
+                    <textarea class="field-input" id="reason" name="reason" rows="4" placeholder="O'zim haqimda qisqacha, nima sababdan men sizga mos ekanligim..." required style="resize: vertical; min-height: 100px; font-family: inherit;"></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
@@ -397,11 +410,11 @@
 
     <script>
         const phoneInput = document.getElementById('phone');
-        
+
         phoneInput.addEventListener('input', function(e) {
             let val = e.target.value.replace(/\D/g, '');
             if (val.length > 9) val = val.slice(0, 9);
-            
+
             let formatted = '';
             if (val.length > 0) {
                 formatted = val.slice(0, 2);
@@ -420,7 +433,7 @@
         const successScreen = document.getElementById('successScreen');
 
         // ⚠️ O'ZINGIZNING GOOGLE APPS SCRIPT URL'INGIZNI QO'YING
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwK6--yvCJ-BWR5SOEgO6d4HTweTsEEhYFpVXGizDeVZeEHIelWag0ignB4n4LFOTdP/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxxzrrGJ7bPBoRJ_NdzRUI-6NuwxJ8D2w3VqaHXZ9mpNekEpkVrwjxgxuECtzq5rzP/exec';
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -428,7 +441,7 @@
 
             const phone = phoneInput.value.replace(/\D/g, '');
             if (phone.length !== 9) {
-                errorMsg.textContent = 'Telefon raqami to\'liq emas. 9 ta raqam kiriting.';
+                errorMsg.textContent = 'Telefon raqami toliq emas. 9 ta raqam kiriting.';
                 errorMsg.style.display = 'block';
                 phoneInput.focus();
                 return;
@@ -439,7 +452,8 @@
                 phone: '+998' + phone,
                 address: document.getElementById('address').value.trim(),
                 age: document.getElementById('age').value,
-                salary: document.getElementById('salary').value
+                experience: document.getElementById('experience').value,
+                reason: document.getElementById('reason').value.trim()
             };
 
             submitBtn.disabled = true;
