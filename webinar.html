@@ -9,10 +9,10 @@
     <!-- Facebook Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2808408296186378');
+    fbq('init', '2375527472968080');
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2808408296186378&ev=PageView&noscript=1"/></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2375527472968080&ev=PageView&noscript=1"/></noscript>
     <!-- End Facebook Pixel Code -->
 
     <style>
@@ -232,24 +232,15 @@
 </div>
 
 <script>
-    // ==========================================
-    // BACKEND CONFIG - Faqat form uchun!
-    // ==========================================
-    const API_BASE_URL = "https://vebinar-mu.vercel.app"; // O'ZGARTIRING!
+    const API_BASE_URL = "https://vebinar-mu.vercel.app";
     
-    // ==========================================
-    // TIMER CONFIG - Frontend'da!
-    // ==========================================
     const WEBINAR_CONFIG = {
-        // O'ZGARTIRING: Webinar sanasi va vaqti (O'zbekiston vaqti UTC+5)
         year: 2026,
-        month: 4,     // Aprel
+        month: 4,
         day: 20,
-        hour: 20,     // 20:00
+        hour: 20,
         minute: 0,
         second: 0,
-        
-        // Ko'rsatish uchun matn
         dateText: "20-Aprel | 20:00 | Onlayn | BEPUL"
     };
 
@@ -257,26 +248,17 @@
     let timerInterval = null;
     let currentPhone = "";
 
-    // ==========================================
-    // TIMER - Faqat Frontend'da!
-    // ==========================================
     function initTimer() {
-        // O'zbekiston vaqti (UTC+5) ni UTC ga o'tkazish
         targetTime = new Date(Date.UTC(
             WEBINAR_CONFIG.year,
-            WEBINAR_CONFIG.month - 1,  // JavaScript 0-based
+            WEBINAR_CONFIG.month - 1,
             WEBINAR_CONFIG.day,
-            WEBINAR_CONFIG.hour - 5,   // UTC+5 -> UTC
+            WEBINAR_CONFIG.hour - 5,
             WEBINAR_CONFIG.minute,
             WEBINAR_CONFIG.second
         ));
         
-        console.log("Timer ishga tushdi. Target:", targetTime.toLocaleString());
-        
-        // Sana matnini yangilash
         document.getElementById("webinarDate").textContent = WEBINAR_CONFIG.dateText;
-        
-        // Timer ishga tushirish
         updateCountdown();
         timerInterval = setInterval(updateCountdown, 1000);
     }
@@ -285,7 +267,6 @@
         const now = new Date();
         let diff = targetTime - now;
         
-        // Agar vaqt o'tib ketgan bo'lsa
         if (diff < 0) {
             diff = 0;
             document.querySelector('.cd-label').textContent = "Dars boshlandi!";
@@ -300,12 +281,8 @@
         document.getElementById("cdS").textContent = String(seconds).padStart(2, '0');
     }
 
-    // ==========================================
-    // FORM - Backend bilan!
-    // ==========================================
     const phoneInput = document.getElementById("w-phone");
     
-    // Telefon formatlash
     phoneInput.addEventListener("input", function(e) {
         let value = e.target.value.replace(/\D/g, '').slice(0, 9);
         let formatted = '';
@@ -316,7 +293,6 @@
         e.target.value = formatted;
     });
 
-    // Form yuborish
     document.getElementById("webinarForm").addEventListener("submit", async function(e) {
         e.preventDefault();
         
@@ -349,10 +325,9 @@
             });
             
             const result = await response.json();
-            console.log("Form javob:", result);
             
             if (response.ok && result.success) {
-                // Facebook Pixel
+                // Facebook Pixel - Lead & CompleteRegistration
                 if (typeof fbq !== 'undefined') {
                     fbq('track', 'Lead');
                     fbq('track', 'CompleteRegistration');
@@ -378,12 +353,10 @@
         }
     });
 
-    // Modal yopish
     document.getElementById("regModal").addEventListener("click", function(e) {
         if (e.target === this) this.classList.remove("show");
     });
 
-    // Telegram tracking
     async function trackTelegram() {
         if (typeof fbq !== 'undefined') {
             fbq('trackCustom', 'TelegramChannelClick');
@@ -403,11 +376,8 @@
     document.getElementById("telegramBtn").addEventListener("click", trackTelegram);
     document.getElementById("telegramLink").addEventListener("click", trackTelegram);
 
-    // ==========================================
-    // INIT
-    // ==========================================
     document.addEventListener('DOMContentLoaded', function() {
-        initTimer(); // Timer backend'siz ishlaydi
+        initTimer();
     });
 </script>
 </body>
