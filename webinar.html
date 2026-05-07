@@ -6,14 +6,14 @@
     <title>Biznes Sirlari | 20-Aprel Bepul Dars</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Facebook Pixel Code -->
+    <!-- Meta Pixel Code (Yangilangan Pixel ID) -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2375527472968080');
+    fbq('init', '2483993082070773');
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2375527472968080&ev=PageView&noscript=1"/></noscript>
-    <!-- End Facebook Pixel Code -->
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2483993082070773&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel Code -->
 
     <style>
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -327,10 +327,19 @@
             const result = await response.json();
             
             if (response.ok && result.success) {
-                // Facebook Pixel - Lead & CompleteRegistration
+                // Yangi Meta Pixel - Lead & CompleteRegistration
                 if (typeof fbq !== 'undefined') {
-                    fbq('track', 'Lead');
-                    fbq('track', 'CompleteRegistration');
+                    fbq('track', 'Lead', {
+                        content_name: 'Biznes Sirlari Webinar',
+                        status: 'success'
+                    });
+                    fbq('track', 'CompleteRegistration', {
+                        content_name: 'Biznes Sirlari Webinar',
+                        status: 'success'
+                    });
+                    console.log('✅ Meta Pixel tracked: Lead & CompleteRegistration');
+                } else {
+                    console.warn('⚠️ fbq undefined, Meta Pixel track qilinmadi');
                 }
                 
                 document.getElementById("regModal").classList.remove("show");
@@ -358,8 +367,13 @@
     });
 
     async function trackTelegram() {
+        // Telegram kanal bosilganda Meta Pixel tracking
         if (typeof fbq !== 'undefined') {
-            fbq('trackCustom', 'TelegramChannelClick');
+            fbq('trackCustom', 'TelegramChannelClick', {
+                channel: 'marufmurodovich',
+                source: 'webinar_page'
+            });
+            console.log('✅ Telegram click tracked');
         }
         
         try {
@@ -375,6 +389,15 @@
 
     document.getElementById("telegramBtn").addEventListener("click", trackTelegram);
     document.getElementById("telegramLink").addEventListener("click", trackTelegram);
+
+    // Meta Pixel yuklanganligini tekshirish
+    window.addEventListener('load', function() {
+        if (typeof fbq !== 'undefined') {
+            console.log('✅ Meta Pixel loaded successfully with ID: 2483993082070773');
+        } else {
+            console.warn('⚠️ Meta Pixel not loaded');
+        }
+    });
 
     document.addEventListener('DOMContentLoaded', function() {
         initTimer();
