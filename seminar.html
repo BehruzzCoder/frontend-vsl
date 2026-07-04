@@ -8,6 +8,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2840123693013140');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <style>
   :root{
     --navy-950:#0a1220;
@@ -446,7 +464,7 @@
 
 <script>
   // !!! MUHIM: pastdagi qatorga o'zingizning Google Apps Script Web App URL manzilingizni qo'ying !!!
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVcW8GSpPFJL93mRyDX5_r60cMQj5qGiduElxGUSzJ9FLVyZrdKnwGFYgwNLG1NZwC/exec";
+  const SCRIPT_URL = "SIZNING_APPS_SCRIPT_WEB_APP_URL_MANZILINGIZ";
 
   const form = document.getElementById('leadForm');
   const msg = document.getElementById('formMsg');
@@ -499,6 +517,14 @@
 
       document.getElementById('formView').style.display = 'none';
       document.getElementById('successView').style.display = 'block';
+
+      // Meta Pixel: ro'yxatdan o'tish muvaffaqiyatli yakunlanganda
+      if (typeof fbq === 'function') {
+        fbq('track', 'CompleteRegistration', {
+          content_name: 'Biznes Transformatsiya Seminari',
+          status: true
+        });
+      }
 
     }catch(err){
       msg.textContent = 'Xatolik yuz berdi. Iltimos qayta urinib ko\'ring.';
