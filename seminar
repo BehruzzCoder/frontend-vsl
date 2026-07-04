@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biznes Transformatsiya Seminari — 26-iyul</title>
+<meta name="description" content="Maruf Murodovich bilan bepul biznes seminari. Tafakkur, moliyaviy holat, online biznes, marketing va sotuv texnikalari.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0a1220;
+    --navy-900:#0f1c30;
+    --navy-800:#16283f;
+    --navy-700:#1e3350;
+    --gold-500:#c9a24b;
+    --gold-400:#e0bf72;
+    --gold-100:#f5ead0;
+    --paper:#f7f4ec;
+    --ink-muted:#a9b7cc;
+    --success:#4caf7d;
+    --error:#e06868;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--navy-950);
+    color:var(--paper);
+    font-family:'Manrope',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* Background texture */
+  .bg-grid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(201,162,75,0.10), transparent 45%),
+      radial-gradient(circle at 85% 0%, rgba(201,162,75,0.06), transparent 40%);
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;z-index:1;
+    padding:72px 0 40px;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--gold-400);
+    border:1px solid rgba(201,162,75,0.35);
+    padding:7px 16px;border-radius:999px;
+    background:rgba(201,162,75,0.06);
+    margin-bottom:28px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-400);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+
+  .hero h1{
+    font-size:clamp(34px,6.4vw,64px);
+    line-height:1.06;
+    color:var(--paper);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-400);
+  }
+  .hero .sub{
+    max-width:620px;margin:24px auto 0;
+    font-size:clamp(16px,2.4vw,19px);
+    color:var(--ink-muted);
+    line-height:1.6;
+  }
+
+  .meta-row{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:14px;
+    margin-top:36px;
+  }
+  .meta-pill{
+    display:flex;align-items:center;gap:10px;
+    background:var(--navy-800);
+    border:1px solid var(--navy-700);
+    padding:12px 20px;border-radius:12px;
+    font-size:14.5px;font-weight:600;
+  }
+  .meta-pill .ico{font-size:17px;}
+  .meta-pill .cap{
+    font-weight:400;color:var(--ink-muted);font-size:13px;
+    display:block;
+  }
+
+  .cta-primary{
+    display:inline-block;margin-top:40px;
+    background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
+    color:var(--navy-950);
+    font-weight:800;font-size:17px;
+    padding:18px 44px;border-radius:12px;
+    border:none;cursor:pointer;
+    box-shadow:0 12px 30px -8px rgba(201,162,75,0.5);
+    transition:transform .2s ease, box-shadow .2s ease;
+    text-decoration:none;
+  }
+  .cta-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px -6px rgba(201,162,75,0.6);}
+
+  .seats-note{
+    margin-top:14px;font-size:13.5px;color:var(--ink-muted);
+  }
+  .seats-note b{color:var(--gold-400);}
+
+  /* SPEAKER STRIP */
+  .speaker{
+    position:relative;z-index:1;
+    margin:56px auto 0;max-width:720px;
+    display:flex;gap:20px;align-items:center;
+    background:var(--navy-900);
+    border:1px solid var(--navy-700);
+    border-radius:var(--radius);
+    padding:22px 26px;
+  }
+  .speaker .avatar{
+    width:58px;height:58px;border-radius:50%;flex:none;
+    background:linear-gradient(135deg,var(--gold-400),var(--navy-700));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:600;font-size:22px;color:var(--navy-950);
+  }
+  .speaker .name{font-weight:700;font-size:16px;}
+  .speaker .role{color:var(--ink-muted);font-size:13.5px;margin-top:2px;}
+
+  /* PROGRAM — signature timeline */
+  .program{
+    position:relative;z-index:1;
+    padding:96px 0 40px;
+  }
+  .program-head{text-align:center;margin-bottom:64px;}
+  .program-head .label{
+    color:var(--gold-400);font-size:13px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;
+  }
+  .program-head h2{
+    font-size:clamp(28px,4.5vw,42px);margin-top:14px;color:var(--paper);
+  }
+
+  .track{
+    position:relative;
+    max-width:760px;margin:0 auto;
+    padding-left:2px;
+  }
+  .track::before{
+    content:"";position:absolute;left:27px;top:10px;bottom:10px;width:2px;
+    background:linear-gradient(var(--gold-500),transparent 96%);
+    opacity:0.5;
+  }
+  .stage{
+    position:relative;
+    display:flex;gap:24px;
+    padding:0 0 52px 0;
+  }
+  .stage:last-child{padding-bottom:0;}
+  .stage .node{
+    flex:none;width:56px;height:56px;border-radius:50%;
+    background:var(--navy-800);border:1px solid var(--gold-500);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--gold-400);
+    z-index:2;
+  }
+  .stage .content{padding-top:8px;}
+  .stage .content h3{font-size:21px;color:var(--paper);margin-bottom:8px;}
+  .stage .content p{margin:0;color:var(--ink-muted);font-size:15px;line-height:1.6;}
+  .stage .tag{
+    display:inline-block;margin-top:12px;font-size:12px;letter-spacing:0.06em;
+    color:var(--gold-400);text-transform:uppercase;font-weight:700;
+  }
+
+  /* WHY / VALUE */
+  .value{
+    position:relative;z-index:1;
+    padding:64px 0;
+  }
+  .value-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+    max-width:900px;margin:0 auto;
+  }
+  @media (max-width:720px){.value-grid{grid-template-columns:1fr;}}
+  .value-card{
+    background:var(--navy-900);border:1px solid var(--navy-700);
+    border-radius:var(--radius);padding:26px 22px;
+  }
+  .value-card .n{font-family:'Fraunces',serif;font-size:15px;color:var(--gold-400);font-weight:600;}
+  .value-card p{color:var(--ink-muted);font-size:14.5px;line-height:1.6;margin-top:10px;}
+
+  /* FORM SECTION */
+  .form-section{
+    position:relative;z-index:1;
+    padding:80px 0 100px;
+  }
+  .form-card{
+    max-width:480px;margin:0 auto;
+    background:var(--navy-900);
+    border:1px solid var(--navy-700);
+    border-radius:20px;
+    padding:40px 36px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+  }
+  .form-card h2{
+    font-size:26px;text-align:center;color:var(--paper);
+  }
+  .form-card .sub{
+    text-align:center;color:var(--ink-muted);font-size:14.5px;margin-top:10px;margin-bottom:28px;
+  }
+  label{
+    display:block;font-size:13px;font-weight:600;color:var(--gold-400);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;
+  }
+  .field{margin-bottom:20px;}
+  input[type=text],input[type=tel]{
+    width:100%;
+    background:var(--navy-950);
+    border:1px solid var(--navy-700);
+    color:var(--paper);
+    font-family:'Manrope',sans-serif;
+    font-size:16px;
+    padding:14px 16px;
+    border-radius:10px;
+    outline:none;
+    transition:border-color .15s ease;
+  }
+  input[type=text]:focus,input[type=tel]:focus{
+    border-color:var(--gold-500);
+  }
+  input::placeholder{color:#5c6b82;}
+
+  .submit-btn{
+    width:100%;
+    background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
+    color:var(--navy-950);font-weight:800;font-size:16.5px;
+    border:none;border-radius:10px;
+    padding:16px;cursor:pointer;
+    margin-top:6px;
+    transition:transform .15s ease, opacity .15s ease;
+  }
+  .submit-btn:hover{transform:translateY(-1px);}
+  .submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+
+  .form-msg{
+    text-align:center;font-size:14px;margin-top:16px;min-height:20px;
+  }
+  .form-msg.error{color:var(--error);}
+  .form-msg.success{color:var(--success);}
+
+  .privacy-note{
+    text-align:center;color:#5c6b82;font-size:12.5px;margin-top:18px;line-height:1.5;
+  }
+
+  .success-view{
+    text-align:center;padding:20px 0;
+  }
+  .success-view .check{
+    width:64px;height:64px;border-radius:50%;
+    background:rgba(76,175,125,0.12);border:1px solid var(--success);
+    display:flex;align-items:center;justify-content:center;
+    font-size:30px;margin:0 auto 20px;
+    color:var(--success);
+  }
+  .success-view h3{font-size:22px;color:var(--paper);}
+  .success-view p{color:var(--ink-muted);font-size:14.5px;margin-top:10px;line-height:1.6;}
+
+  footer{
+    position:relative;z-index:1;
+    text-align:center;padding:32px 0 48px;
+    color:#4a5670;font-size:13px;
+  }
+
+  @media (max-width:600px){
+    .stage{gap:16px;}
+    .stage .node{width:46px;height:46px;font-size:17px;}
+    .track::before{left:22px;}
+    .form-card{padding:32px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span>Bepul biznes seminari</span>
+    <h1>Fikrlashni <em>o'zgartir</em>,<br>biznesingni transformatsiya qil</h1>
+    <p class="sub">Tafakkur, moliya, online daromad va sotuv — bitta kunda, amaliy formatda. Real natija beruvchi 4 ta blok.</p>
+
+    <div class="meta-row">
+      <div class="meta-pill"><span class="ico">📅</span><div><span class="cap">Sana</span>26-iyul</div></div>
+      <div class="meta-pill"><span class="ico">🎤</span><div><span class="cap">Trener</span>Maruf Murodovich</div></div>
+      <div class="meta-pill"><span class="ico">📍</span><div><span class="cap">Manzil</span>Toshkent</div></div>
+      <div class="meta-pill"><span class="ico">👥</span><div><span class="cap">O'rinlar</span>Faqat 200 ta</div></div>
+    </div>
+
+    <a href="#royxat" class="cta-primary">Bepul joy band qilish →</a>
+    <div class="seats-note">O'rinlar soni cheklangan — <b>200 kishi</b>. Ro'yxatdan o'tish tugagach kirish yopiladi.</div>
+  </div>
+
+  <div class="speaker">
+    <div class="avatar">MM</div>
+    <div>
+      <div class="name">Maruf Murodovich</div>
+      <div class="role">Seminar trener — Tafakkur, moliya va biznes strategiyasi bo'yicha amaliyotchi</div>
+    </div>
+  </div>
+</section>
+
+<section class="program">
+  <div class="wrap">
+    <div class="program-head">
+      <div class="label">Kun dasturi</div>
+      <h2>4 bosqichda transformatsiya</h2>
+    </div>
+
+    <div class="track">
+      <div class="stage">
+        <div class="node">1</div>
+        <div class="content">
+          <h3>Tafakkur darsi</h3>
+          <p>Boylik va muvaffaqiyatga yo'l — avval ongdan boshlanadi. Cheklovchi fikrlarni aniqlash va yangi tafakkur asosini qurish.</p>
+          <span class="tag">Mindset</span>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="node">2</div>
+        <div class="content">
+          <h3>Moliyaviy holatni bilib olish va unga yechim berish</h3>
+          <p>Bugungi moliyaviy vaziyatingizni aniq tahlil qilish va real, ishlaydigan yechimlar tuzish.</p>
+          <span class="tag">Moliya</span>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="node">3</div>
+        <div class="content">
+          <h3>Online biznesni o'rganib daromadni oshirish</h3>
+          <p>Internet orqali qo'shimcha va asosiy daromad manbalarini qurish strategiyalari.</p>
+          <span class="tag">Online biznes</span>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="node">4</div>
+        <div class="content">
+          <h3>Marketing va sotuv texnikalari</h3>
+          <p>Mijozni jalb qilish, ishontirish va sotuvni yopishning amaliy usullari.</p>
+          <span class="tag">Marketing / Sotuv</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="value">
+  <div class="wrap">
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="n">Nega borish kerak</div>
+        <p>Nazariya emas — amaliyotda sinalgan, darhol qo'llash mumkin bo'lgan bilimlar.</p>
+      </div>
+      <div class="value-card">
+        <div class="n">Kimlar uchun</div>
+        <p>Biznes boshlamoqchi bo'lganlar, mavjud bizneslarini kengaytirmoqchi bo'lganlar uchun.</p>
+      </div>
+      <div class="value-card">
+        <div class="n">Keyingi qadam</div>
+        <p>Seminardan so'ng 10-avgustdan boshlanadigan chuqurlashtirilgan kursga yozilish imkoniyati.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="royxat">
+  <div class="wrap">
+    <div class="form-card">
+      <div id="formView">
+        <h2>Joyingizni band qiling</h2>
+        <p class="sub">Ism va telefon raqamingizni qoldiring — tasdiqlash uchun siz bilan bog'lanamiz.</p>
+
+        <form id="leadForm">
+          <div class="field">
+            <label for="fullName">Ism familiya</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Ism familiyangiz" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="phone">Telefon raqam</label>
+            <input type="tel" id="phone" name="phone" placeholder="+998 90 123 45 67" required autocomplete="tel">
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">Bepul ro'yxatdan o'tish</button>
+          <div class="form-msg" id="formMsg"></div>
+        </form>
+        <div class="privacy-note">Ma'lumotlaringiz faqat seminar tashkilotchilari bilan bog'lanish uchun ishlatiladi.</div>
+      </div>
+
+      <div id="successView" class="success-view" style="display:none;">
+        <div class="check">✓</div>
+        <h3>Rahmat! Siz ro'yxatga olindingiz</h3>
+        <p>Seminar sanasi va manzili haqida tez orada Siz bilan telefon orqali bog'lanamiz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Biznes Transformatsiya Seminari · Toshkent
+</footer>
+
+<script>
+  // !!! MUHIM: pastdagi qatorga o'zingizning Google Apps Script Web App URL manzilingizni qo'ying !!!
+  const SCRIPT_URL = "SIZNING_APPS_SCRIPT_WEB_APP_URL_MANZILINGIZ";
+
+  const form = document.getElementById('leadForm');
+  const msg = document.getElementById('formMsg');
+  const btn = document.getElementById('submitBtn');
+
+  function isValidUzPhone(v){
+    const digits = v.replace(/\D/g,'');
+    return digits.length >= 9;
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    msg.textContent = '';
+    msg.className = 'form-msg';
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    if(fullName.length < 3){
+      msg.textContent = 'Iltimos, to\'liq ism familyangizni kiriting.';
+      msg.className = 'form-msg error';
+      return;
+    }
+    if(!isValidUzPhone(phone)){
+      msg.textContent = 'Iltimos, to\'g\'ri telefon raqam kiriting.';
+      msg.className = 'form-msg error';
+      return;
+    }
+    if(SCRIPT_URL.indexOf('SIZNING_') !== -1){
+      msg.textContent = 'Diqqat: SCRIPT_URL hali sozlanmagan (kod ichida).';
+      msg.className = 'form-msg error';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Yuborilmoqda...';
+
+    try{
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          fullName: fullName,
+          phone: phone,
+          source: 'landing_page',
+          timestamp: new Date().toISOString()
+        })
+      });
+
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('successView').style.display = 'block';
+
+    }catch(err){
+      msg.textContent = 'Xatolik yuz berdi. Iltimos qayta urinib ko\'ring.';
+      msg.className = 'form-msg error';
+      btn.disabled = false;
+      btn.textContent = 'Bepul ro\'yxatdan o\'tish';
+    }
+  });
+</script>
+
+</body>
+</html>
