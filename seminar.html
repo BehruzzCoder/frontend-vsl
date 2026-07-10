@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Biznes Transformatsiya Seminari — 26-iyul</title>
-<meta name="description" content="Maruf Murodovich bilan bepul biznes seminari. Tafakkur, moliyaviy holat, online biznes, marketing va sotuv texnikalari.">
+<meta name="description" content="Maruf Murodovich bilan biznes seminari. Tafakkur, moliyaviy holat, online biznes, marketing va sotuv texnikalari.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -217,6 +217,87 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
   .value-card .n{font-family:'Fraunces',serif;font-size:15px;color:var(--gold-400);font-weight:600;}
   .value-card p{color:var(--ink-muted);font-size:14.5px;line-height:1.6;margin-top:10px;}
 
+  /* PRICING */
+  .pricing{
+    position:relative;z-index:1;
+    padding:96px 0 40px;
+  }
+  .price-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+    max-width:980px;margin:0 auto;
+    align-items:stretch;
+  }
+  @media (max-width:860px){.price-grid{grid-template-columns:1fr;max-width:440px;}}
+  .price-card{
+    position:relative;
+    background:var(--navy-900);
+    border:1px solid var(--navy-700);
+    border-radius:20px;
+    padding:32px 26px;
+    display:flex;flex-direction:column;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .price-card.selected{
+    border-color:var(--gold-500);
+    box-shadow:0 0 0 1px var(--gold-500);
+  }
+  .price-card.featured{
+    border-color:rgba(201,162,75,0.5);
+    background:linear-gradient(180deg,var(--navy-800),var(--navy-900));
+    transform:translateY(-10px);
+  }
+  @media (max-width:860px){.price-card.featured{transform:none;}}
+  .price-badge{
+    position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+    background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
+    color:var(--navy-950);font-size:11.5px;font-weight:800;letter-spacing:0.05em;
+    padding:6px 16px;border-radius:999px;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .price-card h3{
+    font-size:15px;letter-spacing:0.08em;color:var(--gold-400);
+    text-transform:uppercase;font-weight:700;
+  }
+  .price-amount{
+    font-family:'Fraunces',serif;font-size:38px;font-weight:600;color:var(--paper);
+    margin-top:12px;
+  }
+  .price-amount span{font-size:15px;color:var(--ink-muted);font-family:'Manrope',sans-serif;font-weight:600;margin-left:4px;}
+  .price-old{
+    color:#6b7793;font-size:13.5px;text-decoration:line-through;margin-top:6px;
+  }
+  .price-desc{color:var(--ink-muted);font-size:13.5px;line-height:1.5;margin-top:6px;}
+  .price-features{
+    list-style:none;padding:0;margin:22px 0 0;flex:1;
+  }
+  .price-features li{
+    display:flex;align-items:center;gap:10px;
+    font-size:14px;color:var(--paper);
+    padding:8px 0;
+  }
+  .price-features li::before{
+    content:"✓";color:var(--gold-400);font-weight:800;font-size:13px;
+    width:18px;height:18px;border-radius:50%;
+    background:rgba(201,162,75,0.12);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .price-btn{
+    width:100%;margin-top:24px;
+    background:var(--navy-800);
+    border:1px solid var(--gold-500);
+    color:var(--gold-400);
+    font-weight:800;font-size:14.5px;
+    padding:14px;border-radius:10px;
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease;
+  }
+  .price-btn:hover{background:var(--gold-400);color:var(--navy-950);}
+  .price-card.selected .price-btn{background:var(--gold-400);color:var(--navy-950);}
+  .price-note{
+    text-align:center;color:var(--ink-muted);font-size:13.5px;margin-top:32px;
+  }
+
   /* FORM SECTION */
   .form-section{
     position:relative;z-index:1;
@@ -241,7 +322,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
     text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;
   }
   .field{margin-bottom:20px;}
-  input[type=text],input[type=tel]{
+  input[type=text],input[type=tel],select{
     width:100%;
     background:var(--navy-950);
     border:1px solid var(--navy-700);
@@ -252,8 +333,16 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
     border-radius:10px;
     outline:none;
     transition:border-color .15s ease;
+    appearance:none;
+    -webkit-appearance:none;
   }
-  input[type=text]:focus,input[type=tel]:focus{
+  select{
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' stroke='%23e0bf72' stroke-width='2' fill='none' fill-rule='evenodd'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 16px center;
+    cursor:pointer;
+  }
+  input[type=text]:focus,input[type=tel]:focus,select:focus{
     border-color:var(--gold-500);
   }
   input::placeholder{color:#5c6b82;}
@@ -334,8 +423,8 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span>Bepul biznes seminari</span>
-    <h1>Fikrlashni <em>o'zgartir</em>,<br>biznesingni transformatsiya qil</h1>
+    <span class="eyebrow"><span class="dot"></span>Toshkent · 26-iyul</span>
+    <h1>Fikrlashingizni <em>o'zgartiring</em>,<br>biznesingizni transformatsiya qiling</h1>
     <p class="sub">Tafakkur, moliya, online daromad va sotuv — bitta kunda, amaliy formatda. Real natija beruvchi 4 ta blok.</p>
 
     <div class="meta-row">
@@ -345,7 +434,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
       <div class="meta-pill"><span class="ico">👥</span><div><span class="cap">O'rinlar</span>Faqat 200 ta</div></div>
     </div>
 
-    <a href="#royxat" class="cta-primary">Bepul joy band qilish →</a>
+    <a href="#tariflar" class="cta-primary">Tarifni tanlang →</a>
     <div class="seats-note">O'rinlar soni cheklangan — <b>200 kishi</b>. Ro'yxatdan o'tish tugagach kirish yopiladi.</div>
   </div>
 
@@ -370,7 +459,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
         <div class="node">1</div>
         <div class="content">
           <h3>Tafakkur darsi</h3>
-          <p>Boylik va muvaffaqiyatga yo'l — avval ongdan boshlanadi. Cheklovchi fikrlarni aniqlash va yangi tafakkur asosini qurish.</p>
+          <p>Boylik va muvaffaqiyatga yo'l — avval ongdan boshlanadi. Cheklovchi fikrlarni aniqlang va yangi tafakkur asosini quring.</p>
           <span class="tag">Mindset</span>
         </div>
       </div>
@@ -378,7 +467,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
         <div class="node">2</div>
         <div class="content">
           <h3>Moliyaviy holatni bilib olish va unga yechim berish</h3>
-          <p>Bugungi moliyaviy vaziyatingizni aniq tahlil qilish va real, ishlaydigan yechimlar tuzish.</p>
+          <p>Bugungi moliyaviy vaziyatingizni aniq tahlil qiling va real, ishlaydigan yechimlar tuzing.</p>
           <span class="tag">Moliya</span>
         </div>
       </div>
@@ -386,7 +475,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
         <div class="node">3</div>
         <div class="content">
           <h3>Online biznesni o'rganib daromadni oshirish</h3>
-          <p>Internet orqali qo'shimcha va asosiy daromad manbalarini qurish strategiyalari.</p>
+          <p>Internet orqali qo'shimcha va asosiy daromad manbalarini qurish strategiyalarini o'rganing.</p>
           <span class="tag">Online biznes</span>
         </div>
       </div>
@@ -394,7 +483,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
         <div class="node">4</div>
         <div class="content">
           <h3>Marketing va sotuv texnikalari</h3>
-          <p>Mijozni jalb qilish, ishontirish va sotuvni yopishning amaliy usullari.</p>
+          <p>Mijozni jalb qiling, ishontiring va sotuvni to'g'ri yakunlashning amaliy usullarini egallang.</p>
           <span class="tag">Marketing / Sotuv</span>
         </div>
       </div>
@@ -421,12 +510,69 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
   </div>
 </section>
 
+<section class="pricing" id="tariflar">
+  <div class="wrap">
+    <div class="program-head">
+      <div class="label">Tariflar</div>
+      <h2>Sizga mos tarifni tanlang</h2>
+    </div>
+
+    <div class="price-grid">
+
+      <div class="price-card selected" data-tarif="Standart">
+        <h3>Standart</h3>
+        <div class="price-amount">150 000<span>so'm</span></div>
+        <div class="price-old">1 999 999 so'm</div>
+        <p class="price-desc">Biznes networking va yangi bilimlar</p>
+        <ul class="price-features">
+          <li>1 kishi</li>
+          <li>Daftar-ruchka</li>
+          <li>Kofe-brek</li>
+          <li>Yopiq kanal</li>
+        </ul>
+        <button type="button" class="price-btn" data-tarif="Standart">Tanlash</button>
+      </div>
+
+      <div class="price-card featured" data-tarif="Premium">
+        <span class="price-badge">#Eng qulay</span>
+        <h3>Premium</h3>
+        <div class="price-amount">250 000<span>so'm</span></div>
+        <div class="price-old">2 999 999 so'm</div>
+        <p class="price-desc">Standart tarifi bonus va o'rta qatordan joy</p>
+        <ul class="price-features">
+          <li>2 kishi</li>
+          <li>Daftar-ruchka</li>
+          <li>Kofe-brek</li>
+          <li>Yopiq kanal</li>
+        </ul>
+        <button type="button" class="price-btn" data-tarif="Premium">Tanlash</button>
+      </div>
+
+      <div class="price-card" data-tarif="VIP">
+        <h3>VIP</h3>
+        <div class="price-amount">500 000<span>so'm</span></div>
+        <div class="price-old">4 999 999 so'm</div>
+        <p class="price-desc">Premium tarifi bonus va oldi qatordan joy</p>
+        <ul class="price-features">
+          <li>3 kishi</li>
+          <li>Daftar-ruchka</li>
+          <li>Yopiq kanal</li>
+          <li>Maruf Murodovich bilan biznes tahlil</li>
+        </ul>
+        <button type="button" class="price-btn" data-tarif="VIP">Tanlash</button>
+      </div>
+
+    </div>
+    <p class="price-note">Tarifni tanlagach, pastdagi shakl orqali joyingizni band qiling. To'lov tafsilotlari ro'yxatdan o'tgandan so'ng operator orqali aytiladi.</p>
+  </div>
+</section>
+
 <section class="form-section" id="royxat">
   <div class="wrap">
     <div class="form-card">
       <div id="formView">
         <h2>Joyingizni band qiling</h2>
-        <p class="sub">Ism va telefon raqamingizni qoldiring — tasdiqlash uchun siz bilan bog'lanamiz.</p>
+        <p class="sub">Ism, telefon raqamingiz va tarifni tanlang — tasdiqlash uchun siz bilan bog'lanamiz.</p>
 
         <form id="leadForm">
           <div class="field">
@@ -435,9 +581,17 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
           </div>
           <div class="field">
             <label for="phone">Telefon raqam</label>
-            <input type="tel" id="phone" name="phone" placeholder="+998 90 123 45 67" required autocomplete="tel">
+            <input type="tel" id="phone" name="phone" placeholder="+998 90 123 45 67" value="+998 " required autocomplete="tel" inputmode="numeric">
           </div>
-          <button type="submit" class="submit-btn" id="submitBtn">Bepul ro'yxatdan o'tish</button>
+          <div class="field">
+            <label for="tarifSelect">Tarif</label>
+            <select id="tarifSelect" name="tarif">
+              <option value="Standart" selected>Standart — 150 000 so'm</option>
+              <option value="Premium">Premium — 250 000 so'm</option>
+              <option value="VIP">VIP — 500 000 so'm</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">Ro'yxatdan o'tish</button>
           <div class="form-msg" id="formMsg"></div>
         </form>
         <div class="privacy-note">Ma'lumotlaringiz faqat seminar tashkilotchilari bilan bog'lanish uchun ishlatiladi.</div>
@@ -464,15 +618,78 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
 
 <script>
   // !!! MUHIM: pastdagi qatorga o'zingizning Google Apps Script Web App URL manzilingizni qo'ying !!!
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-I3OLvtbrFqIG1eAdQ1HdaY_DQisGRnfXtKJQiiva1YRNjoMSt5c5QhJx_86fQW8b/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxP--ecZ5rNzWyO124Fyk84XYk7Hck7WGsIVk75x4sRU0l6QiVUipoxVM7gd1b3Mmkv/exec";
+
+  const phoneInput = document.getElementById('phone');
+
+  // Telefon raqamni +998 XX XXX XX XX ko'rinishida formatlaydi
+  function formatUzPhone(rawDigits){
+    // rawDigits: faqat 998 dan keyingi raqamlar (9 tagacha)
+    let d = rawDigits.slice(0, 9);
+    let out = '+998';
+    if(d.length > 0) out += ' ' + d.slice(0,2);
+    if(d.length > 2) out += ' ' + d.slice(2,5);
+    if(d.length > 5) out += ' ' + d.slice(5,7);
+    if(d.length > 7) out += ' ' + d.slice(7,9);
+    return out;
+  }
+
+  function digitsAfterCode(value){
+    let digits = value.replace(/\D/g,'');
+    if(digits.startsWith('998')) digits = digits.slice(3);
+    return digits;
+  }
+
+  phoneInput.addEventListener('input', function(){
+    const digits = digitsAfterCode(phoneInput.value);
+    phoneInput.value = formatUzPhone(digits);
+  });
+
+  phoneInput.addEventListener('focus', function(){
+    // Kursorni doim oxiriga qo'yamiz, +998 ustidan yozib yuborilmasin
+    const val = phoneInput.value;
+    setTimeout(function(){ phoneInput.setSelectionRange(val.length, val.length); }, 0);
+  });
+
+  phoneInput.addEventListener('keydown', function(e){
+    // +998 qismini o'chirib tashlashning oldini olamiz
+    const prefixLen = 4; // "+998"
+    const selStart = phoneInput.selectionStart;
+    if((e.key === 'Backspace' || e.key === 'Delete') && selStart <= prefixLen && phoneInput.selectionEnd <= prefixLen){
+      e.preventDefault();
+    }
+  });
 
   const form = document.getElementById('leadForm');
   const msg = document.getElementById('formMsg');
   const btn = document.getElementById('submitBtn');
+  const tarifSelect = document.getElementById('tarifSelect');
+  const priceCards = document.querySelectorAll('.price-card');
+  const priceButtons = document.querySelectorAll('.price-btn');
+
+  // Narx kartochkalarini va formadagi tanlovni bir-biriga sinxron qilish
+  function selectTarif(tarifName){
+    tarifSelect.value = tarifName;
+    priceCards.forEach(function(card){
+      card.classList.toggle('selected', card.getAttribute('data-tarif') === tarifName);
+    });
+  }
+
+  priceButtons.forEach(function(button){
+    button.addEventListener('click', function(){
+      const tarif = button.getAttribute('data-tarif');
+      selectTarif(tarif);
+      document.getElementById('royxat').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  tarifSelect.addEventListener('change', function(){
+    selectTarif(tarifSelect.value);
+  });
 
   function isValidUzPhone(v){
-    const digits = v.replace(/\D/g,'');
-    return digits.length >= 9;
+    const digits = digitsAfterCode(v);
+    return digits.length === 9;
   }
 
   form.addEventListener('submit', async function(e){
@@ -482,6 +699,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
 
     const fullName = document.getElementById('fullName').value.trim();
     const phone = document.getElementById('phone').value.trim();
+    const tarif = tarifSelect.value;
 
     if(fullName.length < 3){
       msg.textContent = 'Iltimos, to\'liq ism familyangizni kiriting.';
@@ -510,6 +728,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
         body: JSON.stringify({
           fullName: fullName,
           phone: phone,
+          tarif: tarif,
           source: 'landing_page',
           timestamp: new Date().toISOString()
         })
@@ -522,6 +741,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
       if (typeof fbq === 'function') {
         fbq('track', 'CompleteRegistration', {
           content_name: 'Biznes Transformatsiya Seminari',
+          tarif: tarif,
           status: true
         });
       }
@@ -530,7 +750,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
       msg.textContent = 'Xatolik yuz berdi. Iltimos qayta urinib ko\'ring.';
       msg.className = 'form-msg error';
       btn.disabled = false;
-      btn.textContent = 'Bepul ro\'yxatdan o\'tish';
+      btn.textContent = 'Ro\'yxatdan o\'tish';
     }
   });
 </script>
