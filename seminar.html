@@ -347,6 +347,49 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
   }
   input::placeholder{color:#5c6b82;}
 
+  /* TARIF PICKER (form ichidagi chiroyli tanlov) */
+  .tarif-picker{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  }
+  @media (max-width:420px){.tarif-picker{grid-template-columns:1fr;}}
+  .tarif-option{
+    position:relative;
+    background:var(--navy-950);
+    border:1.5px solid var(--navy-700);
+    border-radius:12px;
+    padding:16px 12px 14px;
+    cursor:pointer;
+    text-align:left;
+    display:flex;flex-direction:column;gap:8px;
+    font-family:'Manrope',sans-serif;
+    transition:border-color .15s ease, background .15s ease, transform .1s ease;
+  }
+  .tarif-option:hover{border-color:rgba(201,162,75,0.5);transform:translateY(-1px);}
+  .tarif-option.selected{
+    border-color:var(--gold-500);
+    background:rgba(201,162,75,0.08);
+  }
+  .opt-top{display:flex;align-items:center;gap:8px;}
+  .opt-radio{
+    width:16px;height:16px;border-radius:50%;flex:none;
+    border:1.5px solid var(--ink-muted);
+    position:relative;
+  }
+  .tarif-option.selected .opt-radio{border-color:var(--gold-400);}
+  .tarif-option.selected .opt-radio::after{
+    content:"";position:absolute;inset:3px;border-radius:50%;
+    background:var(--gold-400);
+  }
+  .opt-name{font-weight:700;font-size:14.5px;color:var(--paper);}
+  .opt-price{font-size:13px;color:var(--ink-muted);padding-left:24px;}
+  .tarif-option.selected .opt-price{color:var(--gold-400);}
+  .opt-badge{
+    position:absolute;top:-9px;right:10px;
+    background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
+    color:var(--navy-950);font-size:10px;font-weight:800;
+    padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:0.03em;
+  }
+
   .submit-btn{
     width:100%;
     background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
@@ -434,7 +477,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
       <div class="meta-pill"><span class="ico">👥</span><div><span class="cap">O'rinlar</span>Faqat 200 ta</div></div>
     </div>
 
-    <a href="#tariflar" class="cta-primary">Tarifni tanlang →</a>
+    <a href="#royxat" class="cta-primary">Ro'yxatdan o'tish →</a>
     <div class="seats-note">O'rinlar soni cheklangan — <b>200 kishi</b>. Ro'yxatdan o'tish tugagach kirish yopiladi.</div>
   </div>
 
@@ -584,12 +627,32 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
             <input type="tel" id="phone" name="phone" placeholder="+998 90 123 45 67" value="+998 " required autocomplete="tel" inputmode="numeric">
           </div>
           <div class="field">
-            <label for="tarifSelect">Tarif</label>
-            <select id="tarifSelect" name="tarif">
-              <option value="Standart" selected>Standart — 150 000 so'm</option>
-              <option value="Premium">Premium — 250 000 so'm</option>
-              <option value="VIP">VIP — 500 000 so'm</option>
-            </select>
+            <label>Tarif</label>
+            <div class="tarif-picker" id="tarifPicker">
+              <button type="button" class="tarif-option selected" data-tarif="Standart">
+                <span class="opt-top">
+                  <span class="opt-radio"></span>
+                  <span class="opt-name">Standart</span>
+                </span>
+                <span class="opt-price">150 000 so'm</span>
+              </button>
+              <button type="button" class="tarif-option" data-tarif="Premium">
+                <span class="opt-badge">Eng qulay</span>
+                <span class="opt-top">
+                  <span class="opt-radio"></span>
+                  <span class="opt-name">Premium</span>
+                </span>
+                <span class="opt-price">250 000 so'm</span>
+              </button>
+              <button type="button" class="tarif-option" data-tarif="VIP">
+                <span class="opt-top">
+                  <span class="opt-radio"></span>
+                  <span class="opt-name">VIP</span>
+                </span>
+                <span class="opt-price">500 000 so'm</span>
+              </button>
+            </div>
+            <input type="hidden" id="tarifSelect" name="tarif" value="Standart">
           </div>
           <button type="submit" class="submit-btn" id="submitBtn">Ro'yxatdan o'tish</button>
           <div class="form-msg" id="formMsg"></div>
@@ -618,7 +681,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
 
 <script>
   // !!! MUHIM: pastdagi qatorga o'zingizning Google Apps Script Web App URL manzilingizni qo'ying !!!
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxP--ecZ5rNzWyO124Fyk84XYk7Hck7WGsIVk75x4sRU0l6QiVUipoxVM7gd1b3Mmkv/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVGgsCmvfyibcPnXqQHDYh4DwdRh8bUJfDLjpSoSFYXme1nynt7rUsbVdHVZCn8GU4/exec";
 
   const phoneInput = document.getElementById('phone');
 
@@ -666,12 +729,16 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
   const tarifSelect = document.getElementById('tarifSelect');
   const priceCards = document.querySelectorAll('.price-card');
   const priceButtons = document.querySelectorAll('.price-btn');
+  const tarifOptions = document.querySelectorAll('.tarif-option');
 
   // Narx kartochkalarini va formadagi tanlovni bir-biriga sinxron qilish
   function selectTarif(tarifName){
     tarifSelect.value = tarifName;
     priceCards.forEach(function(card){
       card.classList.toggle('selected', card.getAttribute('data-tarif') === tarifName);
+    });
+    tarifOptions.forEach(function(opt){
+      opt.classList.toggle('selected', opt.getAttribute('data-tarif') === tarifName);
     });
   }
 
@@ -683,8 +750,10 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
     });
   });
 
-  tarifSelect.addEventListener('change', function(){
-    selectTarif(tarifSelect.value);
+  tarifOptions.forEach(function(opt){
+    opt.addEventListener('click', function(){
+      selectTarif(opt.getAttribute('data-tarif'));
+    });
   });
 
   function isValidUzPhone(v){
@@ -699,6 +768,7 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
 
     const fullName = document.getElementById('fullName').value.trim();
     const phone = document.getElementById('phone').value.trim();
+    const phoneForSheet = phone.replace('+', ''); // Sheetsda formula xatosi bermasligi uchun "+" olib tashlanadi
     const tarif = tarifSelect.value;
 
     if(fullName.length < 3){
@@ -727,9 +797,8 @@ src="https://www.facebook.com/tr?id=2840123693013140&ev=PageView&noscript=1"
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({
           fullName: fullName,
-          phone: phone,
+          phone: phoneForSheet,
           tarif: tarif,
-          source: 'landing_page',
           timestamp: new Date().toISOString()
         })
       });
