@@ -61,7 +61,6 @@ input:focus,textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0
 .opt span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:54px;padding:12px;border:1.5px solid var(--line);border-radius:14px;background:#f9fafc;font-weight:500;transition:.2s}
 .opt:hover span{border-color:#b9c6ff}
 .opt input:checked+span{border-color:var(--blue);background:linear-gradient(135deg,#eef1ff,#f3ecff);color:var(--navy2);font-weight:700;box-shadow:0 0 0 3px rgba(91,124,250,.16)}
-.big .opt span{min-height:78px;font-size:17px;flex-direction:column;gap:2px}
 .nav{display:flex;gap:10px;margin-top:22px}.nav .btn{flex:1}.nav .ghost{flex:0 0 auto}
 .sum{background:#f7f8fc;border:1px solid var(--line);border-radius:16px;padding:6px 16px;margin-bottom:18px}
 .sum div{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px}.sum div:last-child{border:0}
@@ -79,9 +78,27 @@ input:focus,textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0
 @keyframes dr{to{stroke-dashoffset:0}}
 footer{text-align:center;color:var(--mut);font-size:13px;padding:28px 20px calc(28px + env(safe-area-inset-bottom))}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
-@media(max-width:520px){section{padding:54px 0}.opts.c2.m1{grid-template-columns:1fr}.btn{font-size:16px}.hero .btn{width:100%}}
+@media(max-width:520px){section{padding:54px 0}.btn{font-size:16px}.hero .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2282094325980827');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2282094325980827&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 <header class="hero"><div class="wrap">
@@ -153,7 +170,6 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:28px 20px calc(
 /* ======================= KONFIGURATSIYA ======================= */
 const CONFIG = {
   GOOGLE_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbz-ldLQvAJv7wlSrhsLoh7DotFEQEybA7RN9vXKraA3368uak6lcFk9MURUrQxt5h7YMA/exec",
-  META_PIXEL_ID: "PASTE_META_PIXEL_ID",
   DEBUG_MODE: false,
   MIN_FILL_SECONDS: 5,      // botlardan himoya
   TIMEOUT_MS: 25000,
@@ -163,18 +179,17 @@ const CONFIG = {
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const log = (...a) => CONFIG.DEBUG_MODE && console.log("[DEBUG]", ...a);
-const cfgOk = v => v && !/^PASTE_/.test(v);
-const EXP1 = ["Tajribam yo‘q", "1 yildan kam", "1–2 yil", "2–4 yil", "4–5 yil", "5 yildan ko‘p"];   // 1-bosqich; dastlabki ikkitasi rad etiladi
+const EXP1 = ["Tajribam yo‘q", "1 yildan kam", "1–2 yil", "2–4 yil", "4–5 yil", "5 yildan ko‘p"];   // dastlabki ikkitasi rad etiladi
 const DUR = ["1–2 yil", "2–4 yil", "4–5 yil", "5 yildan ko‘p"];
 const okExp = e => EXP1.indexOf(e) >= 2;
 const CT = ["Jismoniy shaxslar (B2C)", "Biznes vakillari (B2B)", "Ikkalasi bilan ham ishlaganman"];
 $("#yr").textContent = new Date().getFullYear();
 const t0 = Date.now();
 
-/* ---- Meta Pixel ---- */
-if (cfgOk(CONFIG.META_PIXEL_ID) && /^\d{5,}$/.test(CONFIG.META_PIXEL_ID)) {
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
-  fbq("init", CONFIG.META_PIXEL_ID); fbq("track", "PageView");
+/* ---- Meta Pixel hodisalari (pixel kodi <head> ichida o‘rnatilgan) ---- */
+function fbTrack(type, name, data) { try { if (window.fbq) fbq(type, name, data || {}); } catch (e) {} }
+function trackLead() {
+  fbTrack("trackCustom", "CompletedLead", { source: TRK.source, experience: S.duration || S.exp });
 }
 
 /* ---- UTM / manba (bosqichlar orasida yo‘qolmaydi: sessionStorage) ---- */
@@ -190,7 +205,7 @@ function readTracking() {
   else if (r.includes("instagram.")) source = "Instagram";
   else if (r.includes("facebook.") || r.includes("fb.com") || r.includes("fb.me")) source = "Facebook";
   else source = r ? "Other" : "Direct";
-  return { source, u };
+  return { source, u, ref };
 }
 const TRK = readTracking();
 
@@ -205,12 +220,24 @@ function loadDraft() {
     if (d && Date.now() - d.ts < CONFIG.DRAFT_HOURS * 36e5 && okExp(d.S.exp)) { Object.assign(S, d.S); step = Math.min(Math.max(d.step, 1), 4); } else clearDraft();
   } catch (e) { clearDraft(); }
 }
-function sentBefore(p) { try { return !!JSON.parse(localStorage.getItem("sent") || "{}")[p]; } catch (e) { return false; } }
-function markSent(p) { try { const x = JSON.parse(localStorage.getItem("sent") || "{}"); x[p] = Date.now(); localStorage.setItem("sent", JSON.stringify(x)); } catch (e) {} }
+const digits = p => p.replace(/\D/g, "");
+function sentBefore(p) { try { return !!JSON.parse(localStorage.getItem("sent") || "{}")[digits(p)]; } catch (e) { return false; } }
+function markSent(p) { try { const x = JSON.parse(localStorage.getItem("sent") || "{}"); x[digits(p)] = Date.now(); localStorage.setItem("sent", JSON.stringify(x)); } catch (e) {} }
+
+/* ---- Xato ko‘rsatish ---- */
+function setErr(name, on) { if (!name) return; const el = document.querySelector(`[data-f="${name}"]`); if (el) el.classList.toggle("bad", !!on); }
+function showAlert(t) { const a = $("#alert"); a.textContent = t; a.classList.add("show"); }
+function hideAlert() { $("#alert").classList.remove("show"); }
 
 /* ---- Radio kartalar ---- */
-function cards(el, name, list, key) { el.innerHTML = list.map(t => `<label class="opt"><input type="radio" name="${name}" value="${esc(t)}"><span>${esc(t)}</span></label>`).join("");
-  el.addEventListener("change", e => { S[key] = e.target.value; setErr(el.closest("[data-f]") && el.closest("[data-f]").dataset.f, false); saveDraft(); if (key === "exp") pickExp(); }); }
+function cards(el, name, list, key) {
+  el.innerHTML = list.map(t => `<label class="opt"><input type="radio" name="${name}" value="${esc(t)}"><span>${esc(t)}</span></label>`).join("");
+  el.addEventListener("change", e => {
+    S[key] = e.target.value;
+    const f = el.closest("[data-f]"); if (f) setErr(f.dataset.f, false);
+    saveDraft(); if (key === "exp") pickExp();
+  });
+}
 cards($("#expOpts"), "exp", EXP1, "exp");
 cards($("#durOpts"), "dur", DUR, "duration");
 cards($("#ctOpts"), "ct", CT, "ctype");
@@ -221,109 +248,121 @@ function syncUI() {
 }
 
 /* ---- Telefon maskasi ---- */
-function fmt(v) { let d = v.replace(/\D/g, ""); if (d.startsWith("998")) d = d.slice(3); d = d.slice(0, 9);
-  let o = "+998"; if (d.length) o += " " + d.slice(0, 2); if (d.length > 2) o += " " + d.slice(2, 5); if (d.length > 5) o += " " + d.slice(5, 7); if (d.length > 7) o += " " + d.slice(7, 9);
-  return { t: o, d }; }
+function fmt(v) {
+  let d = v.replace(/\D/g, ""); if (d.startsWith("998")) d = d.slice(3); d = d.slice(0, 9);
+  let o = "+998"; if (d.length) o += " " + d.slice(0, 2); if (d.length > 2) o += " " + d.slice(2, 5);
+  if (d.length > 5) o += " " + d.slice(5, 7); if (d.length > 7) o += " " + d.slice(7, 9);
+  return o;
+}
+const phoneOk = v => digits(v).length === 12 && digits(v).startsWith("998");
 const ph = $("#phone");
 ph.addEventListener("focus", () => { if (!ph.value) ph.value = "+998 "; });
-["input", "change"].forEach(ev => ph.addEventListener(ev, () => { const r = fmt(ph.value); ph.value = r.t; S.phone = r.t; setErr("phone", false); saveDraft(); }));
-ph.addEventListener("blur", () => { if (!fmt(ph.value).d) { ph.value = ""; S.phone = ""; } });
-ph.addEventListener("keydown", e => { if (e.key === "Backspace" && ph.value.length <= 5) { e.preventDefault(); ph.value = "+998 "; } });
-["name", "address", "company", "products", "note"].forEach(k => ["input", "change"].forEach(ev => $("#" + k).addEventListener(ev, e => { S[k] = e.target.value; setErr(k, false); saveDraft(); })));
+ph.addEventListener("input", () => { ph.value = fmt(ph.value); S.phone = ph.value; setErr("phone", false); saveDraft(); });
+ph.addEventListener("blur", () => { if (digits(ph.value).length <= 3) { ph.value = ""; S.phone = ""; } });
+
+/* ---- Matn maydonlari ---- */
+["name", "address", "company", "products", "note"].forEach(k => {
+  $("#" + k).addEventListener("input", e => { S[k] = e.target.value; setErr(k, false); saveDraft(); });
+});
 $("#consent").addEventListener("change", () => setErr("consent", false));
 
-/* ---- Yordamchilar ---- */
-function setErr(k, on) { if (!k) return; const el = $(`[data-f="${k}"]`); el && el.classList.toggle("bad", !!on); if (!on) $("#alert").classList.remove("show"); }
-function alertMsg(m) { const a = $("#alert"); a.textContent = m; a.classList.add("show"); a.scrollIntoView({ behavior: "smooth", block: "center" }); }
-function toBox() { $("#box").scrollIntoView({ behavior: "smooth", block: "start" }); }
-
 /* ---- Bosqichlar ---- */
-function go(n, scroll) {
-  step = n; $$(".step").forEach(s => s.classList.toggle("act", +s.dataset.s === n));
-  $$(".bars i").forEach((b, i) => b.classList.toggle("on", i < n));
-  $("#plabel").textContent = `${n}-bosqich / 4`;
-  $("#back").style.display = n > 1 ? "" : "none";
-  $("#nav").style.display = n === 1 ? "none" : "flex";     // 1-bosqichda tanlov kartalari o‘zi yo‘naltiradi
-  $("#nextT").textContent = n === 4 ? "Arizani yuborish" : "Davom etish";
-  if (n === 4) renderSum();
-  $("#alert").classList.remove("show"); saveDraft(); if (scroll) toBox();
+function render() {
+  $$(".step").forEach(s => s.classList.toggle("act", +s.dataset.s === step));
+  $$(".prog .bars i").forEach((b, i) => b.classList.toggle("on", i < step));
+  $("#plabel").textContent = `${step}-bosqich, jami 4 ta`;
+  $("#nav").style.display = step === 1 ? "none" : "flex";
+  $("#nextT").textContent = step === 4 ? "Arizani yuborish" : "Davom etish";
+  if (step === 4) buildSum();
+  hideAlert(); saveDraft();
+}
+function go(n, scroll) { step = n; render(); if (scroll) $("#box").scrollIntoView({ behavior: "smooth", block: "start" }); }
+function buildSum() {
+  const rows = [["Tajriba (boshlang‘ich)", S.exp], ["Ism va familiya", S.name], ["Telefon", S.phone], ["Manzil", S.address],
+    ["Umumiy tajriba", S.duration], ["Oldingi ish joyi", S.company], ["Sotgan mahsulotlari", S.products], ["Mijozlar", S.ctype]];
+  if (S.note.trim()) rows.push(["Qo‘shimcha", S.note]);
+  $("#sum").innerHTML = rows.map(([k, v]) => `<div><b>${esc(k)}</b><span>${esc(v)}</span></div>`).join("");
 }
 function pickExp() {
-  if (EXP1.indexOf(S.exp) >= 0 && !okExp(S.exp)) { reject(); return; }
-  if (okExp(S.exp)) go(2, true);
+  if (okExp(S.exp)) { setTimeout(() => go(2, true), 220); }
+  else { clearDraft(); $("#formWrap").style.display = "none"; $("#reject").classList.add("show"); }
 }
-function reject() {           // tajribasiz nomzod: hech narsa yuborilmaydi, Lead yo‘q, qoralama tozalanadi
-  finished = true; clearDraft(); Object.keys(S).forEach(k => S[k] = "");
-  $("#formWrap").style.display = "none"; $("#reject").classList.add("show"); toBox();
-}
-$("#redo").addEventListener("click", () => { finished = false; S.exp = ""; syncUI(); $("#reject").classList.remove("show"); $("#formWrap").style.display = ""; go(1, true); });
+$("#redo").addEventListener("click", () => {
+  S.exp = ""; $$('input[name="exp"]').forEach(r => r.checked = false);
+  $("#reject").classList.remove("show"); $("#formWrap").style.display = ""; go(1, true);
+});
 $("#back").addEventListener("click", () => { if (step > 1) go(step - 1, true); });
 
-function validStep(n) {
-  const bad = {};
-  if (n === 1) bad.exp = !okExp(S.exp);
-  if (n === 2) { bad.name = S.name.trim().length < 3 || !/\p{L}/u.test(S.name) || !/\s/.test(S.name.trim()); bad.phone = fmt(S.phone).d.length !== 9; bad.address = S.address.trim().length < 2; }
-  if (n === 3) { bad.duration = !DUR.includes(S.duration); bad.company = S.company.trim().length < 2; bad.products = S.products.trim().length < 3; bad.ctype = !CT.includes(S.ctype); }
-  if (n === 4) bad.consent = !$("#consent").checked;
-  Object.keys(bad).forEach(k => setErr(k, bad[k]));
-  const first = Object.keys(bad).find(k => bad[k]);
-  if (first) { const el = $(`[data-f="${first}"]`); const mm = el && el.querySelector(".msg"); const a = $("#alert"); a.textContent = "Iltimos, to‘ldiring: " + (mm ? mm.textContent : "majburiy maydon"); a.classList.add("show"); el && el.scrollIntoView({ behavior: "smooth", block: "center" }); }
-  return !first;
-}
-function renderSum() {
-  const rows = [["Sotuv tajribasi", S.exp], ["Ism", S.name], ["Telefon", S.phone], ["Manzil", S.address], ["Tajriba", S.duration], ["Oldingi ish joyi", S.company], ["Sotilgan mahsulot", S.products], ["Mijoz turi", S.ctype]];
-  if (S.note.trim()) rows.push(["Qo‘shimcha", S.note]);
-  $("#sum").innerHTML = rows.map(r => `<div><b>${esc(r[0])}</b><span>${esc(r[1])}</span></div>`).join("");
+/* ---- Tekshiruv ---- */
+function validate(n) {
+  let bad = [];
+  const need = (k, ok) => { if (!ok) bad.push(k); setErr(k, !ok); };
+  if (n === 2) {
+    need("name", S.name.trim().split(/\s+/).filter(w => w.length > 1).length >= 2);
+    need("phone", phoneOk(S.phone));
+    need("address", S.address.trim().length >= 2);
+  }
+  if (n === 3) {
+    need("duration", DUR.includes(S.duration));
+    need("company", S.company.trim().length >= 2);
+    need("products", S.products.trim().length >= 3);
+    need("ctype", CT.includes(S.ctype));
+  }
+  if (n === 4) need("consent", $("#consent").checked);
+  if (bad.length) { const el = document.querySelector(`[data-f="${bad[0]}"]`); if (el) el.scrollIntoView({ behavior: "smooth", block: "center" }); }
+  return !bad.length;
 }
 
 /* ---- Yuborish ---- */
-async function send(payload) {
-  if (!cfgOk(CONFIG.GOOGLE_SCRIPT_URL)) throw Object.assign(new Error("CONFIG"), { code: "CONFIG" });
-  const ctl = new AbortController(), tm = setTimeout(() => ctl.abort(), CONFIG.TIMEOUT_MS);
-  try {   // text/plain = "simple request": CORS preflight yo‘q, javobni o‘qish mumkin (no-cors ishlatilmaydi)
-    const r = await fetch(CONFIG.GOOGLE_SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload), signal: ctl.signal, redirect: "follow" });
-    if (!r.ok) throw Object.assign(new Error("HTTP " + r.status), { code: "HTTP" });
-    let j; try { j = await r.json(); } catch (e) { throw Object.assign(new Error("BAD_JSON"), { code: "HTTP" }); }
-    log("server", j);
-    if (!j || j.ok !== true) throw Object.assign(new Error(j && j.error || "SERVER"), { code: j && j.code || "SERVER" });
-    return j;
-  } finally { clearTimeout(tm); }
+function showSuccess() {
+  finished = true; clearDraft();
+  $("#formWrap").style.display = "none"; $("#success").classList.add("show");
+  $("#box").scrollIntoView({ behavior: "smooth", block: "start" });
 }
-$("#form").addEventListener("submit", async e => {
-  e.preventDefault(); if (busy || finished) return;
-  if (!validStep(step)) return;
-  if (step < 4) { go(step + 1, true); return; }
-  if (!validStep(1) || !validStep(2) || !validStep(3)) { alertMsg("Iltimos, barcha majburiy maydonlarni to‘ldiring."); return; }
-  if ($("#website").value) return;                      // honeypot
-  if (Date.now() - t0 < CONFIG.MIN_FILL_SECONDS * 1000) { alertMsg("Iltimos, ma'lumotlarni tekshirib, qayta urinib ko‘ring."); return; }
-  const phone = "+998" + fmt(S.phone).d;
-  if (sentBefore(phone)) { alertMsg("Bu raqamdan ariza allaqachon yuborilgan. Mutaxassislarimiz siz bilan bog‘lanishadi."); return; }
-  if (!navigator.onLine) { alertMsg("Internet aloqasi yo‘q. Ulanib, qayta urinib ko‘ring. Ma'lumotlaringiz saqlangan."); return; }
-  subId = subId || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
-  const payload = Object.assign({
-    subId, hasExperience: "Ha", salesExp: S.exp, name: S.name.trim().replace(/\s+/g, " "), phone, duration: S.duration, company: S.company.trim(), products: S.products.trim(), clientType: S.ctype,
-    address: S.address.trim(), note: S.note.trim(), source: TRK.source, hp: "", elapsed: Math.round((Date.now() - t0) / 1000), page: location.origin + location.pathname
-  }, TRK.u);
-  busy = true; $("#next").disabled = true; $("#next").classList.add("loading"); $("#back").disabled = true;
+async function submit() {
+  if (sentBefore(S.phone)) { showAlert("Bu telefon raqamdan ariza allaqachon yuborilgan. Mutaxassislarimiz siz bilan bog‘lanishadi."); return; }
+  // Bot himoyasi: yashirin maydon to‘ldirilgan yoki juda tez yuborilgan bo‘lsa — jimgina e’tiborsiz qoldiriladi
+  if ($("#website").value || (Date.now() - t0) / 1000 < CONFIG.MIN_FILL_SECONDS) { log("bot gumoni"); showSuccess(); return; }
+  busy = true; $("#next").disabled = true; $("#next").classList.add("loading"); hideAlert();
+  subId = subId || (Date.now().toString(36) + Math.random().toString(36).slice(2, 8));
+  const payload = {
+    id: subId, createdAt: new Date().toISOString(),
+    exp: S.exp, name: S.name.trim(), phone: "+" + digits(S.phone), address: S.address.trim(),
+    duration: S.duration, company: S.company.trim(), products: S.products.trim(), ctype: S.ctype, note: S.note.trim(),
+    source: TRK.source, referrer: TRK.ref, page: location.href.split("#")[0],
+    userAgent: navigator.userAgent, fillSeconds: Math.round((Date.now() - t0) / 1000), ...TRK.u
+  };
+  log("payload", payload);
+  const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), CONFIG.TIMEOUT_MS);
   try {
-    const res = await send(payload);
-    finished = true; markSent(phone); clearDraft();
-    if (window.fbq && !window._leadSent) { window._leadSent = true; fbq("track", "Lead", { content_name: "Telefon sotuv vakansiyasi" }, { eventID: res.id || subId }); }   // faqat server saqlaganidan keyin, bir marta
-    $("#formWrap").style.display = "none"; $("#success").classList.add("show"); toBox();
+    const res = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+      method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload), signal: ctl.signal
+    });
+    let ok = res.ok;
+    try { const j = await res.clone().json(); if (j && (j.ok === false || j.success === false || j.result === "error")) ok = false; } catch (e) {}
+    if (!ok) throw new Error("server " + res.status);
+    markSent(S.phone);
+    trackLead();            // faqat muvaffaqiyatli yuborilgandan keyin
+    showSuccess();
   } catch (err) {
-    log("error", err);
-    const m = { DUPLICATE: "Bu raqamdan ariza allaqachon qabul qilingan. Tez orada siz bilan bog‘lanamiz.", NO_EXPERIENCE: "Afsuski, hozirda bizga telefon orqali sotuv sohasida kamida 1 yillik tajribaga ega mutaxassislar kerak.", INVALID: "Ma'lumotlar noto‘g‘ri to‘ldirilgan. Iltimos, tekshirib qayta yuboring.", CONFIG: "Sayt hali sozlanmagan: CONFIG.GOOGLE_SCRIPT_URL kiritilmagan." }[err.code];
-    if (err.code === "DUPLICATE") markSent(phone);
-    alertMsg(m || (err.name === "AbortError" ? "Ulanish vaqti tugadi. Qayta urinib ko‘ring — ma'lumotlaringiz saqlangan." : "Arizani yuborib bo‘lmadi. Birozdan so‘ng qayta urinib ko‘ring — ma'lumotlaringiz saqlangan."));
-    busy = false; $("#next").disabled = false; $("#next").classList.remove("loading"); $("#back").disabled = false;
+    log("xato", err);
+    showAlert(err.name === "AbortError" ? "Server javob bermadi. Internetni tekshirib, qayta urinib ko‘ring." : "Arizani yuborib bo‘lmadi. Birozdan so‘ng qayta urinib ko‘ring.");
+  } finally {
+    clearTimeout(to); busy = false; $("#next").disabled = false; $("#next").classList.remove("loading");
   }
+}
+$("#form").addEventListener("submit", e => {
+  e.preventDefault(); if (busy || step === 1) return;
+  if (!validate(step)) return;
+  if (step < 4) go(step + 1, true); else submit();
 });
 
-/* ---- CTA, reveal, ishga tushirish ---- */
-$("#cta").addEventListener("click", e => { e.preventDefault(); $("#apply").scrollIntoView({ behavior: "smooth" }); });
-const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { threshold: .1 }) : null;
-$$(".rv").forEach(el => io ? io.observe(el) : el.classList.add("in"));
-loadDraft(); syncUI(); go(step, false);
+/* ---- Boshlash ---- */
+loadDraft(); syncUI(); render();
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { threshold: .12 });
+  $$(".rv").forEach(el => io.observe(el));
+} else $$(".rv").forEach(el => el.classList.add("in"));
 </script>
 </body>
 </html>
