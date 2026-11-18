@@ -3,394 +3,327 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vakansiya — Bizning jamoamizga qo‘shiling | Ariza qoldiring</title>
-<meta name="description" content="Yangi ish imkoniyatini qo‘ldan boy bermang! Ma’lumotlaringizni qoldiring — mutaxassislarimiz siz bilan tez orada bog‘lanishadi.">
+<title>Telefon orqali sotuv bo‘yicha vakansiya | Ariza qoldiring</title>
+<meta name="description" content="Telefon orqali sotuv sohasida tajribangiz bo‘lsa, ariza qoldiring. Mutaxassislarimiz siz bilan bog‘lanishadi.">
 <meta name="theme-color" content="#0b1b3b">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="uz_UZ">
+<meta property="og:title" content="Yangi ish imkoniyatini qo‘ldan boy bermang!">
+<meta property="og:description" content="Telefon orqali sotuv sohasida tajribangiz bo‘lsa, ariza qoldiring.">
 <style>
-:root{--navy:#0b1b3b;--navy2:#13306b;--blue:#4f7cff;--mint:#2dd4a7;--ink:#0f172a;--mut:#64748b;--line:#e2e8f0;--bg:#f6f8fc;--err:#e5484d;--r:20px;--sh:0 10px 40px -12px rgba(11,27,59,.25)}
+:root{--navy:#0b1b3b;--navy2:#1b2f6e;--blue:#5b7cfa;--vio:#8b5cf6;--ink:#0f172a;--mut:#64748b;--line:#e2e8f0;--bg:#f4f6fb;--err:#e5484d;--ok:#22c58b;--sh:0 14px 44px -14px rgba(11,27,59,.3)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#071230 0%,var(--navy2) 60%,#1d4ed8 120%);padding:calc(56px + env(safe-area-inset-top)) 0 96px}
-.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.45}
-.hero:before{width:340px;height:340px;background:var(--blue);top:-120px;right:-80px}
-.hero:after{width:280px;height:280px;background:var(--mint);bottom:-140px;left:-60px;opacity:.28}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#070f26,var(--navy2) 65%,#4338ca 130%);padding:calc(52px + env(safe-area-inset-top)) 0 200px}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(70px)}
+.hero:before{width:320px;height:320px;background:var(--vio);top:-110px;right:-80px;opacity:.5}
+.hero:after{width:260px;height:260px;background:var(--blue);bottom:-130px;left:-60px;opacity:.4}
 .hero .wrap{position:relative;z-index:1}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-size:13px;font-weight:600;margin-bottom:22px}
-.badge i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(45,212,167,.7);animation:pulse 1.8s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(45,212,167,0)}100%{box-shadow:0 0 0 0 rgba(45,212,167,0)}}
-h1{font-size:clamp(32px,7.2vw,60px);line-height:1.08;font-weight:800;letter-spacing:-.02em;max-width:760px}
-h1 span{background:linear-gradient(90deg,#8fb0ff,var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{margin-top:18px;max-width:600px;font-size:clamp(16px,2.4vw,19px);color:#cfd9f2}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;font:inherit;font-weight:700;font-size:17px;color:#fff;padding:16px 30px;border-radius:16px;background:linear-gradient(135deg,var(--blue),#2f5bea);box-shadow:0 12px 28px -8px rgba(79,124,255,.65);transition:transform .2s,box-shadow .2s,filter .2s;text-decoration:none}
-.btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px -10px rgba(79,124,255,.8);filter:brightness(1.06)}
-.btn:active{transform:translateY(0) scale(.98)}
-.btn svg{transition:transform .2s}.btn:hover svg{transform:translateX(4px)}
-.hero .btn{margin-top:32px;background:linear-gradient(135deg,var(--mint),#19b98e);color:#04261d;box-shadow:0 12px 28px -8px rgba(45,212,167,.6)}
-.trust{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:14px;color:#b6c4e6}
-.trust b{color:#fff}
-section{padding:72px 0}
-.title{text-align:center;max-width:560px;margin:0 auto 40px}
-.title h2{font-size:clamp(26px,5vw,36px);letter-spacing:-.02em;line-height:1.15}
-.title p{color:var(--mut);margin-top:10px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:-150px;position:relative;z-index:2}
-.card{background:#fff;border-radius:var(--r);padding:26px;box-shadow:var(--sh);border:1px solid rgba(226,232,240,.7);transition:transform .25s,box-shadow .25s}
+.badge{display:inline-flex;gap:8px;align-items:center;padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-size:13px;font-weight:600;margin-bottom:20px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pl 1.8s infinite}
+@keyframes pl{70%{box-shadow:0 0 0 10px rgba(34,197,139,0)}0%{box-shadow:0 0 0 0 rgba(34,197,139,.7)}}
+h1{font-size:clamp(32px,7.2vw,58px);line-height:1.08;font-weight:800;letter-spacing:-.02em;max-width:740px}
+h1 span{background:linear-gradient(90deg,#a5b8ff,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin-top:18px;max-width:600px;font-size:clamp(16px,2.4vw,19px);color:#cfd8f5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;font:inherit;font-weight:700;font-size:17px;color:#fff;min-height:54px;padding:15px 28px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--vio));box-shadow:0 12px 28px -8px rgba(91,124,250,.7);transition:transform .2s,box-shadow .2s,filter .2s;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 18px 34px -10px rgba(91,124,250,.85)}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:#fff;color:var(--navy2);box-shadow:0 0 0 1.5px var(--line) inset;min-height:54px}
+.btn:disabled{cursor:not-allowed;opacity:.75;transform:none}
+.hero .btn{margin-top:30px}
+section{padding:70px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:-130px;position:relative;z-index:2}
+.card{background:#fff;border-radius:22px;padding:24px;box-shadow:var(--sh);transition:transform .25s}
 .card:hover{transform:translateY(-6px)}
-.ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin-bottom:16px;background:linear-gradient(135deg,#e8eeff,#d8fbf0);color:var(--navy2)}
-.card h3{font-size:18px;margin-bottom:6px}.card p{color:var(--mut);font-size:15px}
-#features{padding-top:0}
-.formbox{max-width:640px;margin:0 auto;background:#fff;border-radius:28px;padding:clamp(22px,5vw,40px);box-shadow:var(--sh);border:1px solid var(--line)}
-.f{margin-bottom:20px}
-label.l,.l{display:block;font-weight:600;font-size:14px;margin-bottom:8px}
-.l em{color:var(--err);font-style:normal}.l small{color:var(--mut);font-weight:400}
-input[type=text],input[type=tel],textarea{width:100%;font:inherit;font-size:16px;padding:15px 16px;border:1.5px solid var(--line);border-radius:14px;background:#f9fafc;color:var(--ink);outline:0;transition:border-color .2s,box-shadow .2s,background .2s}
-textarea{min-height:100px;resize:vertical}
-input:focus,textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(79,124,255,.15)}
+.ico{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;margin-bottom:14px;background:linear-gradient(135deg,#e9edff,#efe8ff);color:var(--navy2)}
+.card h3{font-size:17px;margin-bottom:6px}.card p{color:var(--mut);font-size:15px}
+.title{text-align:center;max-width:560px;margin:0 auto 30px}.title h2{font-size:clamp(26px,5vw,36px);letter-spacing:-.02em;line-height:1.15}.title p{color:var(--mut);margin-top:8px}
+.box{max-width:640px;margin:0 auto;background:#fff;border-radius:28px;padding:clamp(20px,5vw,38px);box-shadow:var(--sh);border:1px solid var(--line)}
+.prog{margin-bottom:26px}
+.prog .bars{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.prog .bars i{height:6px;border-radius:9px;background:var(--line);transition:background .4s}
+.prog .bars i.on{background:linear-gradient(90deg,var(--blue),var(--vio))}
+.prog small{display:block;margin-top:8px;color:var(--mut);font-size:13px;font-weight:600}
+.step{display:none}.step.act{display:block;animation:sl .35s ease}
+@keyframes sl{from{opacity:0;transform:translateX(18px)}}
+.step h3{font-size:22px;line-height:1.25;margin-bottom:18px}
+.f{margin-bottom:18px}
+.l{display:block;font-weight:600;font-size:14px;margin-bottom:8px}.l em{color:var(--err);font-style:normal}.l small{color:var(--mut);font-weight:400}
+input[type=text],input[type=tel],textarea{width:100%;font:inherit;font-size:16px;padding:15px 16px;border:1.5px solid var(--line);border-radius:14px;background:#f9fafc;color:var(--ink);outline:0;transition:.2s;-webkit-appearance:none}
+textarea{min-height:92px;resize:vertical}
+input:focus,textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(91,124,250,.16)}
 .bad input,.bad textarea{border-color:var(--err);background:#fff6f6}
 .msg{display:none;color:var(--err);font-size:13px;margin-top:6px}.bad>.msg{display:block}
-.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.opt{position:relative}.opt input{position:absolute;opacity:0;inset:0;cursor:pointer;width:100%;height:100%;margin:0}
-.opt span{display:block;text-align:center;padding:13px 8px;border:1.5px solid var(--line);border-radius:14px;font-size:15px;font-weight:500;background:#f9fafc;transition:all .2s}
-.opt:hover span{border-color:#b9c9ff}
-.opt input:checked+span{border-color:var(--blue);background:linear-gradient(135deg,#eef2ff,#e6fcf6);color:var(--navy2);font-weight:700;box-shadow:0 0 0 3px rgba(79,124,255,.15)}
-.opt input:focus-visible+span{outline:2px solid var(--blue)}
-.cons{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:#334155;cursor:pointer}
-.cons input{width:20px;height:20px;accent-color:var(--blue);flex:none;margin-top:2px}
+.opts{display:grid;gap:10px}.opts.c2{grid-template-columns:1fr 1fr}.opts.c1{grid-template-columns:1fr}
+.opt{position:relative}.opt input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer}
+.opt span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:54px;padding:12px;border:1.5px solid var(--line);border-radius:14px;background:#f9fafc;font-weight:500;transition:.2s}
+.opt:hover span{border-color:#b9c6ff}
+.opt input:checked+span{border-color:var(--blue);background:linear-gradient(135deg,#eef1ff,#f3ecff);color:var(--navy2);font-weight:700;box-shadow:0 0 0 3px rgba(91,124,250,.16)}
+.big .opt span{min-height:78px;font-size:17px;flex-direction:column;gap:2px}
+.nav{display:flex;gap:10px;margin-top:22px}.nav .btn{flex:1}.nav .ghost{flex:0 0 auto}
+.sum{background:#f7f8fc;border:1px solid var(--line);border-radius:16px;padding:6px 16px;margin-bottom:18px}
+.sum div{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px}.sum div:last-child{border:0}
+.sum b{color:var(--mut);font-weight:600;flex:none}.sum span{text-align:right;word-break:break-word}
+.cons{display:flex;gap:12px;font-size:14px;cursor:pointer;align-items:flex-start}.cons input{width:22px;height:22px;accent-color:var(--blue);flex:none}
 .hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
-.submit{width:100%;margin-top:6px;position:relative}
-.submit:disabled{cursor:not-allowed;filter:grayscale(.2) brightness(.95);transform:none}
 .spin{display:none;width:20px;height:20px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
-.loading .spin{display:block}.loading .bt,.loading .btn svg{display:none}
-@keyframes sp{to{transform:rotate(360deg)}}
-.alert{display:none;margin-bottom:18px;padding:14px 16px;border-radius:14px;background:#fff1f1;border:1px solid #ffd0d0;color:#b42318;font-size:15px}
-.alert.show{display:block;animation:in .3s}
-@keyframes in{from{opacity:0;transform:translateY(-6px)}}
-.note{text-align:center;color:var(--mut);font-size:13px;margin-top:14px}
-.ok{display:none;text-align:center;padding:28px 6px}
-.ok.show{display:block;animation:in .5s}
-.ok svg{width:110px;height:110px}
-.ok .c{stroke:var(--mint);stroke-width:4;fill:rgba(45,212,167,.12);stroke-dasharray:300;stroke-dashoffset:300;animation:dr .7s ease forwards}
-.ok .t{stroke:var(--mint);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke-dasharray:60;stroke-dashoffset:60;animation:dr .5s .6s ease forwards}
+.loading .spin{display:block}.loading .bt{display:none}@keyframes sp{to{transform:rotate(360deg)}}
+.alert{display:none;margin-bottom:16px;padding:14px 16px;border-radius:14px;background:#fff1f1;border:1px solid #ffd0d0;color:#b42318;font-size:15px}.alert.show{display:block;animation:sl .3s}
+.end{display:none;text-align:center;padding:22px 4px}.end.show{display:block;animation:sl .5s}
+.end h3{font-size:25px;margin:14px 0 8px;line-height:1.25}.end p{color:var(--mut)}
+.end svg{width:104px;height:104px}.c,.t{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:300;stroke-dashoffset:300;animation:dr .7s forwards}
+.t{stroke-dasharray:70;stroke-dashoffset:70;animation-delay:.6s;stroke-width:6}.c{stroke-width:4}
+.okk .c,.okk .t{stroke:var(--ok)}.nok .c,.nok .t{stroke:#f59e0b}
 @keyframes dr{to{stroke-dashoffset:0}}
-.ok h3{font-size:26px;margin:14px 0 8px}.ok p{color:var(--mut)}
-footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 20px calc(30px + env(safe-area-inset-bottom))}
-.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
-@media(max-width:520px){section{padding:56px 0}.opts{grid-template-columns:1fr 1fr}.hero{padding-bottom:84px}.btn{width:100%}}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:28px 20px calc(28px + env(safe-area-inset-bottom))}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(max-width:520px){section{padding:54px 0}.opts.c2.m1{grid-template-columns:1fr}.btn{font-size:16px}.hero .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<header class="hero"><div class="wrap">
+  <div class="badge"><i></i> Vakansiya ochiq</div>
+  <h1>Yangi ish imkoniyatini <span>qo‘ldan boy bermang!</span></h1>
+  <p>Bizning jamoamizga qo‘shiling! Telefon orqali sotuv sohasida tajribangiz bo‘lsa, ariza qoldiring. Mutaxassislarimiz siz bilan bog‘lanishadi.</p>
+  <a href="#apply" class="btn" id="cta">Hoziroq ariza qoldirish <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div></header>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="badge"><i></i> Vakansiyalar ochiq</div>
-    <h1>Yangi ish imkoniyatini <span>qo‘ldan boy bermang!</span></h1>
-    <p>Bizning jamoamizga qo‘shiling! Tajribangiz va imkoniyatlaringiz haqida ma'lumot qoldiring. Mutaxassislarimiz siz bilan bog‘lanishadi.</p>
-    <a href="#apply" class="btn" id="heroCta">Hoziroq ariza qoldirish
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
-    <div class="trust"><span>✓ <b>1 daqiqa</b> ichida to‘ldiriladi</span><span>✓ Tajribasiz ham mumkin</span></div>
-  </div>
-</header>
+<section style="padding-top:0"><div class="wrap"><div class="cards">
+  <div class="card rv"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Qulay ish imkoniyati</h3><p>Sizga mos va qulay sharoitdagi ish o‘rni.</p></div>
+  <div class="card rv"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><h3>Tajribangizga mos ish o‘rni</h3><p>Bilim va tajribangizga mos lavozim.</p></div>
+  <div class="card rv"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.5a3.5 3.5 0 010 7M18 14.3c2 .7 3.5 2.7 3.5 5.7"/></svg></div><h3>Professional jamoa</h3><p>Tajribali mutaxassislar bilan ishlang.</p></div>
+  <div class="card rv"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.4L21 9l-5 4.5L17.5 20 12 16.6 6.5 20 8 13.5 3 9l6.4-.6z"/></svg></div><h3>Yangi imkoniyatlar</h3><p>Rivojlanish uchun keng yo‘l.</p></div>
+</div></div></section>
 
-<section id="features">
-  <div class="wrap">
-    <div class="cards">
-      <div class="card rv"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Qulay ish imkoniyati</h3><p>Sizga mos va qulay sharoitdagi ish o‘rni.</p></div>
-      <div class="card rv"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><h3>Tajribaga qarab ish o‘rni</h3><p>Bilim va tajribangizga mos lavozim taklif qilamiz.</p></div>
-      <div class="card rv"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.5a3.5 3.5 0 010 7M18 14.3c2 .7 3.5 2.7 3.5 5.7"/></svg></div><h3>Professional jamoa</h3><p>Tajribali va do‘stona mutaxassislar bilan ishlang.</p></div>
-      <div class="card rv"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.4L21 9l-5 4.5L17.5 20 12 16.6 6.5 20 8 13.5 3 9l6.4-.6z"/></svg></div><h3>Yangi imkoniyatlar</h3><p>Rivojlanish va o‘sish uchun keng yo‘l.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="apply" style="padding-top:20px">
-  <div class="wrap">
-    <div class="title rv"><h2>Ariza topshirish</h2><p>Quyidagi maydonlarni to‘ldiring — biz o‘zimiz bog‘lanamiz.</p></div>
-    <div class="formbox rv">
-      <form id="form" novalidate autocomplete="on">
-        <div class="alert" id="alert" role="alert"></div>
-
-        <div class="f" data-f="name">
-          <label class="l" for="name">Ism va familiya <em>*</em></label>
-          <input type="text" id="name" name="name" placeholder="Ismingiz va familiyangizni kiriting." autocomplete="name" maxlength="80">
-          <div class="msg">Iltimos, ism va familiyangizni kiriting.</div>
+<section id="apply" style="padding-top:10px"><div class="wrap">
+  <div class="title rv"><h2>Ariza topshirish</h2><p>4 ta qisqa bosqich — taxminan 2 daqiqa.</p></div>
+  <div class="box rv" id="box">
+    <div id="formWrap">
+      <div class="prog"><div class="bars"><i></i><i></i><i></i><i></i></div><small id="plabel"></small></div>
+      <div class="alert" id="alert" role="alert"></div>
+      <form id="form" novalidate>
+        <div class="step" data-s="1">
+          <h3>Sotuv sohasida ish tajribangiz bormi?</h3>
+          <div class="opts c1" id="expOpts"></div>
         </div>
 
-        <div class="f" data-f="phone">
-          <label class="l" for="phone">Telefon raqam <em>*</em></label>
-          <input type="tel" id="phone" name="phone" placeholder="+998 XX XXX XX XX" inputmode="numeric" autocomplete="tel">
-          <div class="msg">Telefon raqamni to‘liq kiriting: +998 XX XXX XX XX</div>
+        <div class="step" data-s="2">
+          <h3>Shaxsiy ma'lumotlar</h3>
+          <div class="f" data-f="name"><label class="l" for="name">Ism va familiya <em>*</em></label><input type="text" id="name" placeholder="Ismingiz va familiyangizni kiriting" autocomplete="name" maxlength="80"><div class="msg">Ism va familiyangizni to‘liq kiriting (masalan: Ali Valiyev).</div></div>
+          <div class="f" data-f="phone"><label class="l" for="phone">Telefon raqam <em>*</em></label><input type="tel" id="phone" placeholder="+998 XX XXX XX XX" inputmode="numeric" autocomplete="tel"><div class="msg">To‘liq raqam kiriting: +998 XX XXX XX XX</div></div>
+          <div class="f" data-f="address"><label class="l" for="address">Yashash manzili <em>*</em></label><input type="text" id="address" placeholder="Shahar yoki tumaningizni kiriting" autocomplete="address-level2" maxlength="120"><div class="msg">Shahar yoki tumaningizni kiriting.</div></div>
         </div>
 
-        <div class="f" data-f="experience">
-          <div class="l">Ish tajribasi <em>*</em></div>
-          <div class="opts" id="exp"></div>
-          <div class="msg">Iltimos, ish tajribangizni tanlang.</div>
+        <div class="step" data-s="3">
+          <h3>Ish tajribangiz</h3>
+          <div class="f" data-f="duration"><div class="l">Telefon orqali sotuv sohasida jami qancha tajribangiz bor? <em>*</em></div><div class="opts c2" id="durOpts"></div><div class="msg">Tajriba davomiyligini tanlang.</div></div>
+          <div class="f" data-f="company"><label class="l" for="company">Oldin qaysi kompaniya yoki tashkilotda ishlagansiz? <em>*</em></label><input type="text" id="company" placeholder="Oldingi ish joyingiz nomini kiriting" maxlength="120"><div class="msg">Oldingi ish joyingizni kiriting.</div></div>
+          <div class="f" data-f="products"><label class="l" for="products">Qanday mahsulot yoki xizmatlarni telefon orqali sotgansiz? <em>*</em></label><textarea id="products" placeholder="Masalan: nima sotgansiz, qanday mijozlarga" maxlength="500"></textarea><div class="msg">Sotgan mahsulot yoki xizmatlaringizni yozing.</div></div>
+          <div class="f" data-f="ctype"><div class="l">Asosan qanday mijozlar bilan ishlagansiz? <em>*</em></div><div class="opts c1" id="ctOpts"></div><div class="msg">Mijoz turini tanlang.</div></div>
+          <div class="f"><label class="l" for="note">Sotuv tajribangiz haqida qo‘shimcha ma'lumot <small>(ixtiyoriy)</small></label><textarea id="note" maxlength="800"></textarea></div>
         </div>
 
-        <div class="f" data-f="address">
-          <label class="l" for="address">Yashash manzili <em>*</em></label>
-          <input type="text" id="address" name="address" placeholder="Qaysi shahar yoki tumanda yashaysiz?" autocomplete="address-level2" maxlength="120">
-          <div class="msg">Iltimos, yashash manzilingizni kiriting.</div>
+        <div class="step" data-s="4">
+          <h3>Tekshirib, yuboring</h3>
+          <div class="sum" id="sum"></div>
+          <div class="hp" aria-hidden="true"><label>Website<input type="text" id="website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="f" data-f="consent"><label class="cons"><input type="checkbox" id="consent"><span>Shaxsiy ma'lumotlarimni yig‘ish va qayta ishlashga roziman.</span></label><div class="msg">Yuborish uchun rozilik berishingiz shart.</div></div>
         </div>
 
-        <div class="f">
-          <label class="l" for="note">Qo‘shimcha ma'lumot <small>(ixtiyoriy)</small></label>
-          <textarea id="note" name="note" placeholder="O‘zingiz haqingizda qo‘shimcha ma'lumot yozishingiz mumkin." maxlength="800"></textarea>
-        </div>
-
-        <div class="hp" aria-hidden="true"><label>Website <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></label></div>
-
-        <div class="f" data-f="consent">
-          <label class="cons"><input type="checkbox" id="consent"><span>Shaxsiy ma'lumotlarimni qayta ishlashga roziman.</span></label>
-          <div class="msg">Davom etish uchun rozilik berishingiz kerak.</div>
-        </div>
-
-        <button type="submit" class="btn submit" id="submit"><span class="spin"></span><span class="bt">Arizani yuborish</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        <p class="note">🔒 Ma'lumotlaringiz maxfiy saqlanadi</p>
+        <div class="nav" id="nav"><button type="button" class="btn ghost" id="back">← Ortga</button><button type="submit" class="btn" id="next"><span class="spin"></span><span class="bt" id="nextT">Davom etish</span></button></div>
       </form>
-
-      <div class="ok" id="ok" role="status">
-        <svg viewBox="0 0 110 110"><circle class="c" cx="55" cy="55" r="48"/><path class="t" d="M33 57l15 15 29-32"/></svg>
-        <h3>Arizangiz muvaffaqiyatli yuborildi!</h3>
-        <p>Tez orada siz bilan bog‘lanamiz.</p>
-      </div>
     </div>
-  </div>
-</section>
 
+    <div class="end nok" id="reject"><svg viewBox="0 0 110 110"><circle class="c" cx="55" cy="55" r="48"/><path class="t" d="M55 30v30M55 76v2"/></svg>
+      <h3>Vaqtingiz uchun rahmat!</h3>
+      <p>Afsuski, hozirda bizga telefon orqali sotuv sohasida kamida 1 yillik tajribaga ega mutaxassislar kerak. Vaqtingiz uchun rahmat!</p>
+      <button type="button" class="btn ghost" id="redo" style="margin-top:20px">Javobni o‘zgartirish</button></div>
+
+    <div class="end okk" id="success" role="status"><svg viewBox="0 0 110 110"><circle class="c" cx="55" cy="55" r="48"/><path class="t" d="M33 57l15 15 29-32"/></svg>
+      <h3>Arizangiz muvaffaqiyatli yuborildi!</h3>
+      <p>Ma'lumotlaringiz qabul qilindi. Mutaxassislarimiz tez orada siz bilan bog‘lanishadi.</p></div>
+  </div>
+</div></section>
 <footer>© <span id="yr"></span> Barcha huquqlar himoyalangan.</footer>
 
 <script>
-/* =====================  SOZLAMALAR (SHU YERNI TO‘LDIRING)  ===================== */
+/* ======================= KONFIGURATSIYA ======================= */
 const CONFIG = {
-  // Google Apps Script "Web app" URL (Deploy → Web app → URL). Misol: https://script.google.com/macros/s/AKfyc.../exec
-  SCRIPT_URL: "",
-  // Meta Pixel ID (faqat raqamlar). Bo‘sh qolsa, Pixel yuklanmaydi.
-  PIXEL_ID: "",
-  // Bir xil telefon bilan qayta yuborishni cheklash (soat). Server ham tekshiradi.
-  COOLDOWN_HOURS: 24,
-  // Forma ochilganidan keyin yuborish uchun minimal vaqt (soniya) — botlardan himoya
-  MIN_FILL_SECONDS: 3,
-  TIMEOUT_MS: 20000
+  GOOGLE_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzj90r85yOSEQKu9Uc2I6nu-AT3b96GlTK2cfBtIPmBoB8l7kORgK5zoanE5DQ-4t_yIg/exec",
+  META_PIXEL_ID: "PASTE_META_PIXEL_ID",
+  DEBUG_MODE: false,
+  MIN_FILL_SECONDS: 5,      // botlardan himoya
+  TIMEOUT_MS: 25000,
+  DRAFT_HOURS: 24
 };
-/* ================================================================================ */
-
-const $ = (s, r = document) => r.querySelector(s);
-const form = $("#form"), btn = $("#submit"), alertBox = $("#alert");
-const EXP = ["Tajribam yo‘q", "1 yilgacha", "1–2 yil", "2–3 yil", "3–5 yil", "5 yildan ortiq"];
-const t0 = Date.now();
+/* ============================================================== */
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const log = (...a) => CONFIG.DEBUG_MODE && console.log("[DEBUG]", ...a);
+const cfgOk = v => v && !/^PASTE_/.test(v);
+const EXP1 = ["Tajribam yo‘q", "1 yildan kam", "1–2 yil", "2–4 yil", "4–5 yil", "5 yildan ko‘p"];   // 1-bosqich; dastlabki ikkitasi rad etiladi
+const DUR = ["1–2 yil", "2–4 yil", "4–5 yil", "5 yildan ko‘p"];
+const okExp = e => EXP1.indexOf(e) >= 2;
+const CT = ["Jismoniy shaxslar (B2C)", "Biznes vakillari (B2B)", "Ikkalasi bilan ham ishlaganman"];
 $("#yr").textContent = new Date().getFullYear();
+const t0 = Date.now();
 
-/* ---- Meta Pixel (faqat ID kiritilsa) ---- */
-(function () {
-  if (!/^\d{5,}$/.test(CONFIG.PIXEL_ID)) return;
+/* ---- Meta Pixel ---- */
+if (cfgOk(CONFIG.META_PIXEL_ID) && /^\d{5,}$/.test(CONFIG.META_PIXEL_ID)) {
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
-  fbq("init", CONFIG.PIXEL_ID); fbq("track", "PageView");
-})();
-const track = (ev, d) => { try { window.fbq && fbq("track", ev, d || {}); } catch (e) {} };
-
-/* ---- UTM va manba ---- */
-function getTracking() {
-  const p = new URLSearchParams(location.search), keys = ["utm_source", "utm_campaign", "utm_adset", "utm_ad"];
-  let saved = {}; try { saved = JSON.parse(sessionStorage.getItem("utm") || "{}"); } catch (e) {}
-  const utm = Object.assign({}, saved);
-  keys.forEach(k => { const v = p.get(k); if (v) utm[k] = v.slice(0, 150); });
-  // Meta makroslari uchun muqobil nomlar
-  if (!utm.utm_adset && (p.get("utm_term"))) utm.utm_adset = p.get("utm_term").slice(0, 150);
-  if (!utm.utm_ad && (p.get("utm_content"))) utm.utm_ad = p.get("utm_content").slice(0, 150);
-  try { sessionStorage.setItem("utm", JSON.stringify(utm)); } catch (e) {}
-  const s = (utm.utm_source || "").toLowerCase(), ref = (document.referrer || "").toLowerCase();
-  let source = "Direct";
-  if (/^(ig|instagram)/.test(s) || ref.includes("instagram.com") || ref.includes("l.instagram.com")) source = "Instagram";
-  else if (/^(fb|facebook|meta)/.test(s) || ref.includes("facebook.com") || ref.includes("fb.com") || p.has("fbclid")) source = "Facebook";
-  return { source, utm };
+  fbq("init", CONFIG.META_PIXEL_ID); fbq("track", "PageView");
 }
-const TRK = getTracking();
 
-/* ---- Tajriba radio-cardlar ---- */
-$("#exp").innerHTML = EXP.map((t, i) => `<label class="opt"><input type="radio" name="experience" value="${t}" ${i === 0 ? "" : ""}><span>${t}</span></label>`).join("");
-
-/* ---- Telefon maskasi: +998 XX XXX XX XX ---- */
-const phone = $("#phone");
-function fmtPhone(v) {
-  let d = v.replace(/\D/g, "");
-  if (d.startsWith("998")) d = d.slice(3);
-  d = d.slice(0, 9);
-  let o = "+998";
-  if (d.length) o += " " + d.slice(0, 2);
-  if (d.length > 2) o += " " + d.slice(2, 5);
-  if (d.length > 5) o += " " + d.slice(5, 7);
-  if (d.length > 7) o += " " + d.slice(7, 9);
-  return { text: o, digits: d };
+/* ---- UTM / manba (bosqichlar orasida yo‘qolmaydi: sessionStorage) ---- */
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "campaign_id", "adset", "adset_id", "ad", "ad_id"];
+function readTracking() {
+  const p = new URLSearchParams(location.search); let u = {};
+  try { u = JSON.parse(sessionStorage.getItem("trk") || "{}"); } catch (e) {}
+  UTM_KEYS.forEach(k => { const v = p.get(k); if (v) u[k] = v.slice(0, 150); });
+  try { sessionStorage.setItem("trk", JSON.stringify(u)); } catch (e) {}
+  let ref = ""; try { ref = sessionStorage.getItem("ref"); if (ref === null) { ref = document.referrer || ""; sessionStorage.setItem("ref", ref); } } catch (e) { ref = document.referrer || ""; }
+  const s = (u.utm_source || "").toLowerCase(), r = ref.toLowerCase(); let source;
+  if (s) source = /instagram|^ig$|^ig[_-]/.test(s) ? "Instagram" : /facebook|^fb$|^fb[_-]/.test(s) ? "Facebook" : "Other";
+  else if (r.includes("instagram.")) source = "Instagram";
+  else if (r.includes("facebook.") || r.includes("fb.com") || r.includes("fb.me")) source = "Facebook";
+  else source = r ? "Other" : "Direct";
+  return { source, u };
 }
-phone.addEventListener("focus", () => { if (!phone.value) phone.value = "+998 "; });
-phone.addEventListener("input", () => { phone.value = fmtPhone(phone.value).text; clearErr("phone"); });
-phone.addEventListener("blur", () => { if (fmtPhone(phone.value).digits.length === 0) phone.value = ""; });
-phone.addEventListener("keydown", e => { if (e.key === "Backspace" && phone.value.length <= 5) { e.preventDefault(); phone.value = "+998 "; } });
+const TRK = readTracking();
 
-/* ---- Validatsiya ---- */
-function setErr(k, on) { const el = $(`[data-f="${k}"]`); if (el) el.classList.toggle("bad", on); }
-function clearErr(k) { setErr(k, false); alertBox.classList.remove("show"); }
-["name", "address"].forEach(k => $("#" + k).addEventListener("input", () => clearErr(k)));
-$("#consent").addEventListener("change", () => clearErr("consent"));
-$("#exp").addEventListener("change", () => clearErr("experience"));
+/* ---- Holat va qoralama (draft) ---- */
+const S = { exp: "", name: "", phone: "", address: "", duration: "", company: "", products: "", ctype: "", note: "" };
+let step = 1, busy = false, finished = false, subId = null;
+const DK = "draft_v2";
+function saveDraft() { if (finished) return; try { localStorage.setItem(DK, JSON.stringify({ S, step, ts: Date.now() })); } catch (e) {} }
+function clearDraft() { try { localStorage.removeItem(DK); } catch (e) {} }
+function loadDraft() {
+  try { const d = JSON.parse(localStorage.getItem(DK) || "null");
+    if (d && Date.now() - d.ts < CONFIG.DRAFT_HOURS * 36e5 && okExp(d.S.exp)) { Object.assign(S, d.S); step = Math.min(Math.max(d.step, 1), 4); } else clearDraft();
+  } catch (e) { clearDraft(); }
+}
+function sentBefore(p) { try { return !!JSON.parse(localStorage.getItem("sent") || "{}")[p]; } catch (e) { return false; } }
+function markSent(p) { try { const x = JSON.parse(localStorage.getItem("sent") || "{}"); x[p] = Date.now(); localStorage.setItem("sent", JSON.stringify(x)); } catch (e) {} }
 
-function validate() {
-  const v = {
-    name: $("#name").value.trim().replace(/\s+/g, " "),
-    phone: fmtPhone(phone.value).digits,
-    experience: (form.experience.value || ""),
-    address: $("#address").value.trim(),
-    note: $("#note").value.trim(),
-    consent: $("#consent").checked
-  };
-  const bad = {
-    name: v.name.length < 3 || !/\p{L}/u.test(v.name),
-    phone: v.phone.length !== 9,
-    experience: !v.experience,
-    address: v.address.length < 2,
-    consent: !v.consent
-  };
+/* ---- Radio kartalar ---- */
+function cards(el, name, list, key) { el.innerHTML = list.map(t => `<label class="opt"><input type="radio" name="${name}" value="${esc(t)}"><span>${esc(t)}</span></label>`).join("");
+  el.addEventListener("change", e => { S[key] = e.target.value; setErr(el.closest("[data-f]") && el.closest("[data-f]").dataset.f, false); saveDraft(); if (key === "exp") pickExp(); }); }
+cards($("#expOpts"), "exp", EXP1, "exp");
+cards($("#durOpts"), "dur", DUR, "duration");
+cards($("#ctOpts"), "ct", CT, "ctype");
+function syncUI() {
+  ["name", "address", "company", "products", "note"].forEach(k => $("#" + k).value = S[k]);
+  $("#phone").value = S.phone;
+  [["exp", S.exp], ["dur", S.duration], ["ct", S.ctype]].forEach(([n, v]) => $$(`input[name="${n}"]`).forEach(r => r.checked = r.value === v));
+}
+
+/* ---- Telefon maskasi ---- */
+function fmt(v) { let d = v.replace(/\D/g, ""); if (d.startsWith("998")) d = d.slice(3); d = d.slice(0, 9);
+  let o = "+998"; if (d.length) o += " " + d.slice(0, 2); if (d.length > 2) o += " " + d.slice(2, 5); if (d.length > 5) o += " " + d.slice(5, 7); if (d.length > 7) o += " " + d.slice(7, 9);
+  return { t: o, d }; }
+const ph = $("#phone");
+ph.addEventListener("focus", () => { if (!ph.value) ph.value = "+998 "; });
+["input", "change"].forEach(ev => ph.addEventListener(ev, () => { const r = fmt(ph.value); ph.value = r.t; S.phone = r.t; setErr("phone", false); saveDraft(); }));
+ph.addEventListener("blur", () => { if (!fmt(ph.value).d) { ph.value = ""; S.phone = ""; } });
+ph.addEventListener("keydown", e => { if (e.key === "Backspace" && ph.value.length <= 5) { e.preventDefault(); ph.value = "+998 "; } });
+["name", "address", "company", "products", "note"].forEach(k => ["input", "change"].forEach(ev => $("#" + k).addEventListener(ev, e => { S[k] = e.target.value; setErr(k, false); saveDraft(); })));
+$("#consent").addEventListener("change", () => setErr("consent", false));
+
+/* ---- Yordamchilar ---- */
+function setErr(k, on) { if (!k) return; const el = $(`[data-f="${k}"]`); el && el.classList.toggle("bad", !!on); if (!on) $("#alert").classList.remove("show"); }
+function alertMsg(m) { const a = $("#alert"); a.textContent = m; a.classList.add("show"); a.scrollIntoView({ behavior: "smooth", block: "center" }); }
+function toBox() { $("#box").scrollIntoView({ behavior: "smooth", block: "start" }); }
+
+/* ---- Bosqichlar ---- */
+function go(n, scroll) {
+  step = n; $$(".step").forEach(s => s.classList.toggle("act", +s.dataset.s === n));
+  $$(".bars i").forEach((b, i) => b.classList.toggle("on", i < n));
+  $("#plabel").textContent = `${n}-bosqich / 4`;
+  $("#back").style.display = n > 1 ? "" : "none";
+  $("#nav").style.display = n === 1 ? "none" : "flex";     // 1-bosqichda tanlov kartalari o‘zi yo‘naltiradi
+  $("#nextT").textContent = n === 4 ? "Arizani yuborish" : "Davom etish";
+  if (n === 4) renderSum();
+  $("#alert").classList.remove("show"); saveDraft(); if (scroll) toBox();
+}
+function pickExp() {
+  if (EXP1.indexOf(S.exp) >= 0 && !okExp(S.exp)) { reject(); return; }
+  if (okExp(S.exp)) go(2, true);
+}
+function reject() {           // tajribasiz nomzod: hech narsa yuborilmaydi, Lead yo‘q, qoralama tozalanadi
+  finished = true; clearDraft(); Object.keys(S).forEach(k => S[k] = "");
+  $("#formWrap").style.display = "none"; $("#reject").classList.add("show"); toBox();
+}
+$("#redo").addEventListener("click", () => { finished = false; S.exp = ""; syncUI(); $("#reject").classList.remove("show"); $("#formWrap").style.display = ""; go(1, true); });
+$("#back").addEventListener("click", () => { if (step > 1) go(step - 1, true); });
+
+function validStep(n) {
+  const bad = {};
+  if (n === 1) bad.exp = !okExp(S.exp);
+  if (n === 2) { bad.name = S.name.trim().length < 3 || !/\p{L}/u.test(S.name) || !/\s/.test(S.name.trim()); bad.phone = fmt(S.phone).d.length !== 9; bad.address = S.address.trim().length < 2; }
+  if (n === 3) { bad.duration = !DUR.includes(S.duration); bad.company = S.company.trim().length < 2; bad.products = S.products.trim().length < 3; bad.ctype = !CT.includes(S.ctype); }
+  if (n === 4) bad.consent = !$("#consent").checked;
   Object.keys(bad).forEach(k => setErr(k, bad[k]));
   const first = Object.keys(bad).find(k => bad[k]);
-  if (first) { const el = $(`[data-f="${first}"]`); el.scrollIntoView({ behavior: "smooth", block: "center" }); const i = el.querySelector("input"); i && i.focus({ preventScroll: true }); }
-  return first ? null : v;
+  if (first) { const el = $(`[data-f="${first}"]`); const mm = el && el.querySelector(".msg"); const a = $("#alert"); a.textContent = "Iltimos, to‘ldiring: " + (mm ? mm.textContent : "majburiy maydon"); a.classList.add("show"); el && el.scrollIntoView({ behavior: "smooth", block: "center" }); }
+  return !first;
+}
+function renderSum() {
+  const rows = [["Sotuv tajribasi", S.exp], ["Ism", S.name], ["Telefon", S.phone], ["Manzil", S.address], ["Tajriba", S.duration], ["Oldingi ish joyi", S.company], ["Sotilgan mahsulot", S.products], ["Mijoz turi", S.ctype]];
+  if (S.note.trim()) rows.push(["Qo‘shimcha", S.note]);
+  $("#sum").innerHTML = rows.map(r => `<div><b>${esc(r[0])}</b><span>${esc(r[1])}</span></div>`).join("");
 }
 
-/* ---- Takroriy yuborishni cheklash (brauzer darajasida) ---- */
-function recentlySent(d) {
-  try { const x = JSON.parse(localStorage.getItem("sent") || "{}"); return x[d] && Date.now() - x[d] < CONFIG.COOLDOWN_HOURS * 3600e3; } catch (e) { return false; }
-}
-function markSent(d) { try { const x = JSON.parse(localStorage.getItem("sent") || "{}"); x[d] = Date.now(); x.any = Date.now(); localStorage.setItem("sent", JSON.stringify(x)); } catch (e) {} }
-function showAlert(m) { alertBox.textContent = m; alertBox.classList.add("show"); alertBox.scrollIntoView({ behavior: "smooth", block: "center" }); }
-function showSuccess() { form.style.display = "none"; $("#ok").classList.add("show"); $("#ok").scrollIntoView({ behavior: "smooth", block: "center" }); }
-
-/* ---- Google Sheets ga yuborish ---- */
-async function sendToSheets(payload) {
-  if (!CONFIG.SCRIPT_URL) throw new Error("CONFIG");
+/* ---- Yuborish ---- */
+async function send(payload) {
+  if (!cfgOk(CONFIG.GOOGLE_SCRIPT_URL)) throw Object.assign(new Error("CONFIG"), { code: "CONFIG" });
   const ctl = new AbortController(), tm = setTimeout(() => ctl.abort(), CONFIG.TIMEOUT_MS);
-  try {
-    // "text/plain" — CORS preflight talab qilmaydi, Apps Script bilan ishonchli ishlaydi
-    const res = await fetch(CONFIG.SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload), signal: ctl.signal, redirect: "follow" });
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    const j = await res.json();
-    if (!j || !j.ok) { const e = new Error(j && j.error || "SERVER"); e.code = j && j.code; throw e; }
+  try {   // text/plain = "simple request": CORS preflight yo‘q, javobni o‘qish mumkin (no-cors ishlatilmaydi)
+    const r = await fetch(CONFIG.GOOGLE_SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload), signal: ctl.signal, redirect: "follow" });
+    if (!r.ok) throw Object.assign(new Error("HTTP " + r.status), { code: "HTTP" });
+    let j; try { j = await r.json(); } catch (e) { throw Object.assign(new Error("BAD_JSON"), { code: "HTTP" }); }
+    log("server", j);
+    if (!j || j.ok !== true) throw Object.assign(new Error(j && j.error || "SERVER"), { code: j && j.code || "SERVER" });
     return j;
   } finally { clearTimeout(tm); }
 }
-
-let busy = false;
-form.addEventListener("submit", async e => {
-  e.preventDefault();
-  if (busy) return;                       // takroriy bosishdan himoya
-  if ($("#website").value) return;        // honeypot: bot to‘ldirgan
-  const v = validate(); if (!v) return;
-  if (Date.now() - t0 < CONFIG.MIN_FILL_SECONDS * 1000) { showAlert("Iltimos, formani diqqat bilan to‘ldiring va qayta urinib ko‘ring."); return; }
-  if (recentlySent(v.phone)) { showAlert("Bu raqamdan ariza yaqinda yuborilgan. Mutaxassislarimiz tez orada bog‘lanishadi."); return; }
-
-  busy = true; btn.disabled = true; btn.classList.add("loading"); alertBox.classList.remove("show");
-  const payload = {
-    name: v.name, phone: "+998" + v.phone, experience: v.experience, address: v.address, note: v.note,
-    source: TRK.source, utm_source: TRK.utm.utm_source || "", utm_campaign: TRK.utm.utm_campaign || "",
-    utm_adset: TRK.utm.utm_adset || "", utm_ad: TRK.utm.utm_ad || "",
-    hp: "", elapsed: Math.round((Date.now() - t0) / 1000), page: location.origin + location.pathname
-  };
+$("#form").addEventListener("submit", async e => {
+  e.preventDefault(); if (busy || finished) return;
+  if (!validStep(step)) return;
+  if (step < 4) { go(step + 1, true); return; }
+  if (!validStep(1) || !validStep(2) || !validStep(3)) { alertMsg("Iltimos, barcha majburiy maydonlarni to‘ldiring."); return; }
+  if ($("#website").value) return;                      // honeypot
+  if (Date.now() - t0 < CONFIG.MIN_FILL_SECONDS * 1000) { alertMsg("Iltimos, ma'lumotlarni tekshirib, qayta urinib ko‘ring."); return; }
+  const phone = "+998" + fmt(S.phone).d;
+  if (sentBefore(phone)) { alertMsg("Bu raqamdan ariza allaqachon yuborilgan. Mutaxassislarimiz siz bilan bog‘lanishadi."); return; }
+  if (!navigator.onLine) { alertMsg("Internet aloqasi yo‘q. Ulanib, qayta urinib ko‘ring. Ma'lumotlaringiz saqlangan."); return; }
+  subId = subId || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
+  const payload = Object.assign({
+    subId, hasExperience: "Ha", salesExp: S.exp, name: S.name.trim().replace(/\s+/g, " "), phone, duration: S.duration, company: S.company.trim(), products: S.products.trim(), clientType: S.ctype,
+    address: S.address.trim(), note: S.note.trim(), source: TRK.source, hp: "", elapsed: Math.round((Date.now() - t0) / 1000), page: location.origin + location.pathname
+  }, TRK.u);
+  busy = true; $("#next").disabled = true; $("#next").classList.add("loading"); $("#back").disabled = true;
   try {
-    await sendToSheets(payload);
-    markSent(v.phone); track("Lead", { content_name: "Vakansiya arizasi" });
-    showSuccess();                         // busy true holicha qoladi — qayta yuborib bo‘lmaydi
+    const res = await send(payload);
+    finished = true; markSent(phone); clearDraft();
+    if (window.fbq && !window._leadSent) { window._leadSent = true; fbq("track", "Lead", { content_name: "Telefon sotuv vakansiyasi" }, { eventID: res.id || subId }); }   // faqat server saqlaganidan keyin, bir marta
+    $("#formWrap").style.display = "none"; $("#success").classList.add("show"); toBox();
   } catch (err) {
-    if (err.code === "DUPLICATE") { markSent(v.phone); showAlert("Bu raqamdan ariza allaqachon qabul qilingan. Tez orada bog‘lanamiz."); }
-    else if (err.message === "CONFIG") showAlert("Sayt hali sozlanmagan: CONFIG.SCRIPT_URL kiritilmagan.");
-    else if (err.name === "AbortError") showAlert("Ulanish vaqti tugadi. Internetni tekshirib, qayta urinib ko‘ring. Ma'lumotlaringiz saqlangan.");
-    else if (!navigator.onLine) showAlert("Internet aloqasi yo‘q. Ulanib, qayta urinib ko‘ring. Ma'lumotlaringiz saqlangan.");
-    else showAlert("Arizani yuborib bo‘lmadi. Birozdan so‘ng qayta urinib ko‘ring — kiritgan ma'lumotlaringiz saqlangan.");
-    busy = false; btn.disabled = false; btn.classList.remove("loading");   // maydonlar tozalanmaydi
+    log("error", err);
+    const m = { DUPLICATE: "Bu raqamdan ariza allaqachon qabul qilingan. Tez orada siz bilan bog‘lanamiz.", NO_EXPERIENCE: "Afsuski, hozirda bizga telefon orqali sotuv sohasida kamida 1 yillik tajribaga ega mutaxassislar kerak.", INVALID: "Ma'lumotlar noto‘g‘ri to‘ldirilgan. Iltimos, tekshirib qayta yuboring.", CONFIG: "Sayt hali sozlanmagan: CONFIG.GOOGLE_SCRIPT_URL kiritilmagan." }[err.code];
+    if (err.code === "DUPLICATE") markSent(phone);
+    alertMsg(m || (err.name === "AbortError" ? "Ulanish vaqti tugadi. Qayta urinib ko‘ring — ma'lumotlaringiz saqlangan." : "Arizani yuborib bo‘lmadi. Birozdan so‘ng qayta urinib ko‘ring — ma'lumotlaringiz saqlangan."));
+    busy = false; $("#next").disabled = false; $("#next").classList.remove("loading"); $("#back").disabled = false;
   }
 });
 
-/* ---- CTA scroll va reveal animatsiya ---- */
-$("#heroCta").addEventListener("click", e => { e.preventDefault(); $("#apply").scrollIntoView({ behavior: "smooth" }); setTimeout(() => $("#name").focus({ preventScroll: true }), 700); });
-const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { threshold: .12 }) : null;
-document.querySelectorAll(".rv").forEach(el => io ? io.observe(el) : el.classList.add("in"));
-</script>
-
-<!--
-  GOOGLE APPS SCRIPT BACKEND (alohida fayl kerak emas).
-  Quyidagi kodni nusxalab: Google Sheets → Extensions → Apps Script ichiga qo‘ying, so‘ng Deploy → Web app.
-  Hosil bo‘lgan URL ni yuqoridagi CONFIG.SCRIPT_URL ga yozing.
--->
-<script type="text/plain" id="apps-script-code">
-/** Vakansiya arizalari → Google Sheets. Google Sheets: Extensions → Apps Script ichiga qo‘ying. */
-const SHEET_NAME = "Arizalar";
-const TZ = "Asia/Tashkent";
-const DUP_HOURS = 24;
-const HEADERS = ["ID","Sana","Vaqt","Ism va familiya","Telefon raqam","Ish tajribasi","Yashash manzili",
-  "Qo‘shimcha ma'lumot","Manba (Instagram / Facebook / Direct)","Ariza holati","UTM Source","UTM Campaign","UTM Adset","UTM Ad"];
-const EXPERIENCES = ["Tajribam yo‘q","1 yilgacha","1–2 yil","2–3 yil","3–5 yil","5 yildan ortiq"];
-
-function out(o) { return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); }
-function clean(v, n) { return String(v == null ? "" : v).replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n); }
-// Formula injection (=, +, -, @) dan himoya
-function safe(v) { return /^[=+\-@]/.test(v) ? "'" + v : v; }
-
-function getSheet() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sh = ss.getSheetByName(SHEET_NAME);
-  if (!sh) sh = ss.insertSheet(SHEET_NAME);
-  if (sh.getLastRow() === 0) {
-    sh.appendRow(HEADERS);
-    sh.getRange(1, 1, 1, HEADERS.length).setFontWeight("bold").setBackground("#0b1b3b").setFontColor("#ffffff");
-    sh.setFrozenRows(1);
-    sh.getRange("E:E").setNumberFormat("@");   // telefon matn bo‘lib saqlansin
-  }
-  return sh;
-}
-
-function doGet() { return out({ ok: true, service: "vakansiya-api" }); }
-
-function doPost(e) {
-  const lock = LockService.getScriptLock();
-  try {
-    lock.waitLock(15000);
-    const d = JSON.parse(e.postData.contents);
-    if (d.hp) return out({ ok: true });                       // honeypot — botga jim "ok"
-
-    const name = clean(d.name, 80), phone = clean(d.phone, 20), exp = clean(d.experience, 40), addr = clean(d.address, 120);
-    if (name.length < 3 || !/^\+998\d{9}$/.test(phone) || EXPERIENCES.indexOf(exp) < 0 || addr.length < 2)
-      return out({ ok: false, code: "INVALID", error: "Ma'lumotlar noto‘g‘ri" });
-    if (Number(d.elapsed) < 2) return out({ ok: true });      // juda tez yuborilgan — bot
-
-    const sh = getSheet();
-    const last = sh.getLastRow();
-    if (last > 1) {                                           // takroriy ariza tekshiruvi
-      const from = Math.max(2, last - 300);
-      const rows = sh.getRange(from, 2, last - from + 1, 4).getValues();   // Sana, Vaqt, Ism, Telefon
-      const limit = Date.now() - DUP_HOURS * 3600e3;
-      for (let i = rows.length - 1; i >= 0; i--) {
-        if (String(rows[i][3]).replace(/^'/, "") === phone) {
-          const t = new Date(String(rows[i][0]) + " " + String(rows[i][1])).getTime();
-          if (isNaN(t) || t > limit) return out({ ok: false, code: "DUPLICATE", error: "Takroriy ariza" });
-        }
-      }
-    }
-    const now = new Date();
-    const src = ["Instagram","Facebook","Direct"].indexOf(d.source) >= 0 ? d.source : "Direct";
-    const id = "A" + Utilities.formatDate(now, TZ, "yyMMdd") + "-" + (last < 1 ? 1 : last);
-    sh.appendRow([id, Utilities.formatDate(now, TZ, "yyyy-MM-dd"), Utilities.formatDate(now, TZ, "HH:mm:ss"),
-      safe(name), phone, exp, safe(addr), safe(clean(d.note, 800)), src, "Yangi",
-      safe(clean(d.utm_source, 150)), safe(clean(d.utm_campaign, 150)), safe(clean(d.utm_adset, 150)), safe(clean(d.utm_ad, 150))]);
-    return out({ ok: true, id: id });
-  } catch (err) {
-    return out({ ok: false, code: "SERVER", error: String(err) });
-  } finally {
-    try { lock.releaseLock(); } catch (x) {}
-  }
-}
+/* ---- CTA, reveal, ishga tushirish ---- */
+$("#cta").addEventListener("click", e => { e.preventDefault(); $("#apply").scrollIntoView({ behavior: "smooth" }); });
+const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { threshold: .1 }) : null;
+$$(".rv").forEach(el => io ? io.observe(el) : el.classList.add("in"));
+loadDraft(); syncUI(); go(step, false);
 </script>
 </body>
 </html>
