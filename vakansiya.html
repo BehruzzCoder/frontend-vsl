@@ -170,7 +170,7 @@ src="https://www.facebook.com/tr?id=2282094325980827&ev=PageView&noscript=1"
 /* ======================= KONFIGURATSIYA ======================= */
 const CONFIG = {
   GOOGLE_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbwZ4sAguOghjhNSwnCAxEWNK1fR1pLM06yrZI3HZb2dpJJTGmSPZt5XHb8IL2QvQkWJDw/exec",
-  DEBUG_MODE: false,
+  DEBUG_MODE: /[?&]debug=1/.test(location.search),   // sahifa manzili oxiriga ?debug=1 qo‘shsangiz, xato sababi ko‘rinadi
   MIN_FILL_SECONDS: 5,      // botlardan himoya
   TIMEOUT_MS: 25000,
   DRAFT_HOURS: 24
@@ -338,15 +338,19 @@ async function submit() {
     const res = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
       method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload), signal: ctl.signal
     });
-    let ok = res.ok;
-    try { const j = await res.clone().json(); if (j && (j.ok === false || j.success === false || j.result === "error")) ok = false; } catch (e) {}
-    if (!ok) throw new Error("server " + res.status);
+    let raw = "", j = null;
+    try { raw = await res.text(); j = JSON.parse(raw); } catch (e) {}
+    log("javob", res.status, raw.slice(0, 300));
+    if (j && j.code === "DUPLICATE") { markSent(S.phone); showSuccess(); return; }
+    if (!res.ok || !j || j.ok !== true) throw new Error("server " + res.status + " | " + (j ? (j.code || "") + " " + (j.detail || j.error || "") : "JSON emas: " + raw.slice(0, 120)));
     markSent(S.phone);
     trackLead();            // faqat muvaffaqiyatli yuborilgandan keyin
     showSuccess();
   } catch (err) {
     log("xato", err);
-    showAlert(err.name === "AbortError" ? "Server javob bermadi. Internetni tekshirib, qayta urinib ko‘ring." : "Arizani yuborib bo‘lmadi. Birozdan so‘ng qayta urinib ko‘ring.");
+    console.error("Yuborish xatosi:", err);
+    const base = err.name === "AbortError" ? "Server javob bermadi. Internetni tekshirib, qayta urinib ko‘ring." : "Arizani yuborib bo‘lmadi. Birozdan so‘ng qayta urinib ko‘ring.";
+    showAlert(CONFIG.DEBUG_MODE ? base + " [" + (err.message || err) + "]" : base);
   } finally {
     clearTimeout(to); busy = false; $("#next").disabled = false; $("#next").classList.remove("loading");
   }
