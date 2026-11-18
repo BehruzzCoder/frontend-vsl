@@ -190,6 +190,7 @@ const t0 = Date.now();
 function fbTrack(type, name, data) { try { if (window.fbq) fbq(type, name, data || {}); } catch (e) {} }
 function trackLead() {
   fbTrack("trackCustom", "CompletedLead", { source: TRK.source, experience: S.duration || S.exp });
+  fbTrack("track", "CompleteRegistration", { content_name: "Vakansiya arizasi", status: true, source: TRK.source, experience: S.duration || S.exp });
 }
 
 /* ---- UTM / manba (bosqichlar orasida yo‘qolmaydi: sessionStorage) ---- */
